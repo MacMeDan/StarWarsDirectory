@@ -5,5 +5,9 @@ target 'StarWarsDirectory' do
   use_frameworks!
 
   pod 'Alamofire'
+  pod 'AlamofireImage'
+  pod 'SnapKit'
+  pod 'SQLite.swift'
+  pod 'StarWars'
 
 end

@@ -9,24 +9,52 @@
 /* Begin PBXBuildFile section */
 		0C97661ABF0B4824F17D1B5B /* Pods_StarWarsDirectory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0B03BFB75E8F44F741FAB9 /* Pods_StarWarsDirectory.framework */; };
 		375E5B161E70AFCE000273D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B151E70AFCE000273D3 /* AppDelegate.swift */; };
-		375E5B181E70AFCE000273D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B171E70AFCE000273D3 /* ViewController.swift */; };
 		375E5B1B1E70AFCE000273D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375E5B191E70AFCE000273D3 /* Main.storyboard */; };
 		375E5B1D1E70AFCE000273D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375E5B1C1E70AFCE000273D3 /* Assets.xcassets */; };
 		375E5B201E70AFCE000273D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375E5B1E1E70AFCE000273D3 /* LaunchScreen.storyboard */; };
 		375E5B281E70B066000273D3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B271E70B066000273D3 /* API.swift */; };
-		375E5B2A1E70B379000273D3 /* Charicter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B291E70B379000273D3 /* Charicter.swift */; };
+		375E5B2A1E70B379000273D3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B291E70B379000273D3 /* Character.swift */; };
+		375E5B2C1E70B81C000273D3 /* CharicterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B2B1E70B81C000273D3 /* CharicterTableViewCell.swift */; };
+		375E5B2E1E70B85B000273D3 /* DirectoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B2D1E70B85B000273D3 /* DirectoryTableViewController.swift */; };
+		375E5B301E70B8B1000273D3 /* CharacterWebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B2F1E70B8B1000273D3 /* CharacterWebAPI.swift */; };
+		375E5B331E70D4CB000273D3 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B321E70D4CB000273D3 /* UIImageView.swift */; };
+		375E5B351E70E779000273D3 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B341E70E779000273D3 /* UITableView.swift */; };
+		375E5B371E70F059000273D3 /* PersistantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B361E70F059000273D3 /* PersistantData.swift */; };
+		375FFBCC1E720BE000473E91 /* initalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBCB1E720BE000473E91 /* initalScreen.swift */; };
+		375FFBCE1E720EE900473E91 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBCD1E720EE900473E91 /* ProfileButton.swift */; };
+		375FFBD01E720F5200473E91 /* MainSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBCF1E720F5200473E91 /* MainSettingsViewController.swift */; };
+		375FFBD21E720FA400473E91 /* SettingsTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBD11E720FA400473E91 /* SettingsTheme.swift */; };
+		375FFBD41E720FF800473E91 /* CircularRevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBD31E720FF800473E91 /* CircularRevealAnimator.swift */; };
+		375FFBD61E72102800473E91 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBD51E72102800473E91 /* ProfileVC.swift */; };
+		375FFBD81E72106400473E91 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBD71E72106400473E91 /* View.swift */; };
+		375FFBDA1E7210A000473E91 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBD91E7210A000473E91 /* UIColor.swift */; };
+		375FFBDC1E7210FF00473E91 /* AnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBDB1E7210FF00473E91 /* AnimationDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		375E5B121E70AFCE000273D3 /* StarWarsDirectory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsDirectory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		375E5B151E70AFCE000273D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		375E5B171E70AFCE000273D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		375E5B1A1E70AFCE000273D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		375E5B1C1E70AFCE000273D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		375E5B1F1E70AFCE000273D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		375E5B211E70AFCE000273D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		375E5B271E70B066000273D3 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		375E5B291E70B379000273D3 /* Charicter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Charicter.swift; sourceTree = "<group>"; };
+		375E5B291E70B379000273D3 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Character.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		375E5B2B1E70B81C000273D3 /* CharicterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CharicterTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		375E5B2D1E70B85B000273D3 /* DirectoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DirectoryTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		375E5B2F1E70B8B1000273D3 /* CharacterWebAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CharacterWebAPI.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		375E5B321E70D4CB000273D3 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		375E5B341E70E779000273D3 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		375E5B361E70F059000273D3 /* PersistantData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistantData.swift; sourceTree = "<group>"; };
+		375FFBCB1E720BE000473E91 /* initalScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = initalScreen.swift; sourceTree = "<group>"; };
+		375FFBCD1E720EE900473E91 /* ProfileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
+		375FFBCF1E720F5200473E91 /* MainSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSettingsViewController.swift; sourceTree = "<group>"; };
+		375FFBD11E720FA400473E91 /* SettingsTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTheme.swift; sourceTree = "<group>"; };
+		375FFBD31E720FF800473E91 /* CircularRevealAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularRevealAnimator.swift; sourceTree = "<group>"; };
+		375FFBD51E72102800473E91 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		375FFBD71E72106400473E91 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		375FFBD91E7210A000473E91 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		375FFBDB1E7210FF00473E91 /* AnimationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDelegate.swift; sourceTree = "<group>"; };
 		5A0B03BFB75E8F44F741FAB9 /* Pods_StarWarsDirectory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsDirectory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		750AFF95E849256C3BF4ACCA /* Pods-StarWarsDirectory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsDirectory.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsDirectory/Pods-StarWarsDirectory.release.xcconfig"; sourceTree = "<group>"; };
 		F7EAD8C135DB1F8F6F0560F3 /* Pods-StarWarsDirectory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsDirectory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsDirectory/Pods-StarWarsDirectory.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,14 +104,52 @@
 			children = (
 				375E5B151E70AFCE000273D3 /* AppDelegate.swift */,
 				375E5B271E70B066000273D3 /* API.swift */,
-				375E5B171E70AFCE000273D3 /* ViewController.swift */,
-				375E5B291E70B379000273D3 /* Charicter.swift */,
+				375FFBDE1E7213F500473E91 /* Character */,
+				375FFBCB1E720BE000473E91 /* initalScreen.swift */,
+				375FFBCD1E720EE900473E91 /* ProfileButton.swift */,
+				375FFBDD1E72113F00473E91 /* Animation */,
+				375FFBD51E72102800473E91 /* ProfileVC.swift */,
+				375FFBCF1E720F5200473E91 /* MainSettingsViewController.swift */,
+				375E5B2D1E70B85B000273D3 /* DirectoryTableViewController.swift */,
+				375E5B311E70D4B3000273D3 /* Exstentions */,
 				375E5B191E70AFCE000273D3 /* Main.storyboard */,
 				375E5B1C1E70AFCE000273D3 /* Assets.xcassets */,
 				375E5B1E1E70AFCE000273D3 /* LaunchScreen.storyboard */,
 				375E5B211E70AFCE000273D3 /* Info.plist */,
 			);
 			path = StarWarsDirectory;
+			sourceTree = "<group>";
+		};
+		375E5B311E70D4B3000273D3 /* Exstentions */ = {
+			isa = PBXGroup;
+			children = (
+				375E5B321E70D4CB000273D3 /* UIImageView.swift */,
+				375FFBD91E7210A000473E91 /* UIColor.swift */,
+				375E5B341E70E779000273D3 /* UITableView.swift */,
+				375FFBD71E72106400473E91 /* View.swift */,
+			);
+			name = Exstentions;
+			sourceTree = "<group>";
+		};
+		375FFBDD1E72113F00473E91 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				375FFBDB1E7210FF00473E91 /* AnimationDelegate.swift */,
+				375FFBD31E720FF800473E91 /* CircularRevealAnimator.swift */,
+				375FFBD11E720FA400473E91 /* SettingsTheme.swift */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		375FFBDE1E7213F500473E91 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				375E5B2F1E70B8B1000273D3 /* CharacterWebAPI.swift */,
+				375E5B291E70B379000273D3 /* Character.swift */,
+				375E5B2B1E70B81C000273D3 /* CharicterTableViewCell.swift */,
+				375E5B361E70F059000273D3 /* PersistantData.swift */,
+			);
+			name = Character;
 			sourceTree = "<group>";
 		};
 		BA949A4D93D6EDC5AF80D633 /* Frameworks */ = {
@@ -218,10 +284,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				375E5B181E70AFCE000273D3 /* ViewController.swift in Sources */,
+				375FFBD41E720FF800473E91 /* CircularRevealAnimator.swift in Sources */,
+				375FFBDC1E7210FF00473E91 /* AnimationDelegate.swift in Sources */,
+				375E5B2E1E70B85B000273D3 /* DirectoryTableViewController.swift in Sources */,
 				375E5B281E70B066000273D3 /* API.swift in Sources */,
+				375FFBD81E72106400473E91 /* View.swift in Sources */,
+				375FFBCE1E720EE900473E91 /* ProfileButton.swift in Sources */,
+				375E5B331E70D4CB000273D3 /* UIImageView.swift in Sources */,
+				375E5B371E70F059000273D3 /* PersistantData.swift in Sources */,
+				375FFBD61E72102800473E91 /* ProfileVC.swift in Sources */,
 				375E5B161E70AFCE000273D3 /* AppDelegate.swift in Sources */,
-				375E5B2A1E70B379000273D3 /* Charicter.swift in Sources */,
+				375FFBCC1E720BE000473E91 /* initalScreen.swift in Sources */,
+				375E5B2A1E70B379000273D3 /* Character.swift in Sources */,
+				375E5B351E70E779000273D3 /* UITableView.swift in Sources */,
+				375E5B301E70B8B1000273D3 /* CharacterWebAPI.swift in Sources */,
+				375FFBD01E720F5200473E91 /* MainSettingsViewController.swift in Sources */,
+				375FFBDA1E7210A000473E91 /* UIColor.swift in Sources */,
+				375FFBD21E720FA400473E91 /* SettingsTheme.swift in Sources */,
+				375E5B2C1E70B81C000273D3 /* CharicterTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

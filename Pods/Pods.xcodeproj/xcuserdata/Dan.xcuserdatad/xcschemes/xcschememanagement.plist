@@ -9,7 +9,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-StarWarsDirectory.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SQLite.swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>StarWars.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5737283D858D69308F65E781644C35B5</key>
+		<key>24B7729CA14217AC61AF4267C58C2A68</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B00EEBABF8E422370B2737AF1E4F2F64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DDF053ABE0A78B3B1B6CD13EE5BB7292</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFBC2EB0954C28706D85A9CAFEE1A358</key>
 		<dict>
 			<key>primary</key>
 			<true/>

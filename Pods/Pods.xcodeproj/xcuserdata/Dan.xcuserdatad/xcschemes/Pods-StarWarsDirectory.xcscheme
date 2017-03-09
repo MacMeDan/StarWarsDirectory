@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5737283D858D69308F65E781644C35B5"
+               BlueprintIdentifier = "24B7729CA14217AC61AF4267C58C2A68"
                BuildableName = "Pods_StarWarsDirectory.framework"
                BlueprintName = "Pods-StarWarsDirectory"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5737283D858D69308F65E781644C35B5"
+            BlueprintIdentifier = "24B7729CA14217AC61AF4267C58C2A68"
             BuildableName = "Pods_StarWarsDirectory.framework"
             BlueprintName = "Pods-StarWarsDirectory"
             ReferencedContainer = "container:Pods.xcodeproj">

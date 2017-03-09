@@ -1,5 +1,5 @@
 //
-//  Charicter.swift
+//  Character.swift
 //  StarWarsDirectory
 //
 //  Created by P D Leonard on 3/8/17.

@@ -1,12 +1,27 @@
 PODS:
   - Alamofire (4.3.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
+  - SnapKit (3.2.0)
+  - SQLite.swift (0.11.2):
+    - SQLite.swift/standard (= 0.11.2)
+  - SQLite.swift/standard (0.11.2)
+  - StarWars (2.0)
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireImage
+  - SnapKit
+  - SQLite.swift
+  - StarWars
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SQLite.swift: 670c3e9e0a806bbfd56a3de5d530768dc0e6fe7c
+  StarWars: 3c68dc5e9f1b6ca6d407b1d4218fd8a65c2eacfa
 
-PODFILE CHECKSUM: 512e54836a0467a5e48e1aeafda2d094806b7593
+PODFILE CHECKSUM: eff95b35106eb74c430a55997b122b2a7b8bb7b7
 
 COCOAPODS: 1.2.0

@@ -1,0 +1,52 @@
+//
+//  MainSettingsViewController.swift
+//  StarWarsDirectory
+//
+//  Created by P D Leonard on 3/9/17.
+//  Copyright © 2017 MacMeDan. All rights reserved.
+//
+import UIKit
+
+class MainSettingsViewController: UIViewController {
+    
+    @IBOutlet fileprivate weak var saveButton: UIButton!
+    
+    var theme: SettingsTheme! {
+        didSet {
+            saveButton?.backgroundColor = theme.primaryColor
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupNavigationBar()
+    }
+    
+    fileprivate func setupNavigationBar() {
+        navigationController!.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController!.navigationBar.shadowImage = UIImage()
+        navigationController!.navigationBar.isTranslucent = true
+        navigationController!.navigationBar.titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "GothamPro", size: 20)!,
+            NSForegroundColorAttributeName: UIColor.white
+        ]
+    }
+    
+    fileprivate var settingsViewController: ProfileVC?
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let settings = segue.destination as? ProfileVC {
+            settingsViewController = settings
+            settings.themeChanged = { [unowned self, unowned settings] darkside, center in
+                let center = self.view.convert(center, from: settings.view)
+                self.view.animateCircular(withDuration: 0.5, center: center, revert: darkside ? false : true, animations: {
+                    self.theme = darkside ? .dark : .light
+                })
+            }
+        }
+    }
+    
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
+}
