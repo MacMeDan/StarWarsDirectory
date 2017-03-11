@@ -7,25 +7,16 @@
 //
 
 import UIKit
+import StarWars
 
 class DirectoryTableViewController: UITableViewController {
     let reuseIdentifier = "characterReuseIdentifier"
     var characters = [Character]()
-    
-    convenience init() {
-        self.init(nibName: nil, bundle: nil)
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Character list"
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.removeLines()
         NotificationCenter.default.addObserver(self, selector: #selector(initialDataLoad), name: NSNotification.Name(rawValue: "PersistCharactersDidFinishNotification"), object: nil)
@@ -35,6 +26,12 @@ class DirectoryTableViewController: UITableViewController {
     func initialDataLoad() {
         DispatchQueue.main.async {
             self.reloadDataWith(characters: PersistedData.shared?.allCharicters())
+        }
+    }
+    
+    @IBAction func setupYourProfileTapped(_ sender: ProfileButton) {
+        sender.animateTouchUpInside {
+            self.performSegue(withIdentifier: "presentSettings", sender: sender)
         }
     }
     
@@ -61,11 +58,12 @@ class DirectoryTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? CharacterTableViewCell else {
             return UITableViewCell()
         }
-            //UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier) as CharacterTableViewCell
+        cell.backgroundColor = UIColor(string: "#f8f8f8")
         let character = characters[indexPath.item]
         cell.mainLabel.text = character.firstName + " " + character.lastName
         cell.subLabel.text = character.affiliation
         let imageURL = URL(string: character.picture)
+        
         cell.picture.setRemoteImage(defaultImage: UIImage(), imageURL: imageURL)
         return cell
     }
@@ -76,8 +74,15 @@ class DirectoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let character = characters[indexPath.item]
-        let profile = ProfileVC(character: character)
-        self.navigationController?.pushViewController(profile, animated: true)
+        let settingsView = SettingsViewController(character: character)
+        self.present(settingsView, animated: true, completion: nil)
     }
-    
 }
+
+extension DirectoryTableViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return StarWarsGLAnimator()
+    }
+}
+

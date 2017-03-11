@@ -16,16 +16,6 @@ class IntroViewController: UIViewController {
     @IBOutlet fileprivate var topContraint: NSLayoutConstraint!
     @IBOutlet weak var button: ProfileButton!
     
-    override func viewDidLoad() {
-        button.addTarget(self, action: #selector(presentList), for: .touchUpInside)
-    }
-    
-    func presentList() {
-        let charicterList = DirectoryTableViewController()
-        let nav = UINavigationController(rootViewController: charicterList)
-        self.present(nav, animated: true, completion: nil)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         topContraint.isActive = false
@@ -41,26 +31,15 @@ class IntroViewController: UIViewController {
     }
     
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination
-        destination.transitioningDelegate = self
-        if let navigation = destination as? UINavigationController,
-            let settings = navigation.topViewController as? MainSettingsViewController {
-            settings.theme = .light
-        }
-    }
 }
 
-extension IntroViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        //        return StarWarsUIDynamicAnimator()
-        //        return StarWarsUIViewAnimator()
-        return StarWarsGLAnimator()
-    }
-}
+//extension IntroViewController: UIViewControllerTransitioningDelegate {
+//    
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        //        return StarWarsUIDynamicAnimator()
+//        //        return StarWarsUIViewAnimator()
+//        return StarWarsGLAnimator()
+//    }
+//}
 
