@@ -41,27 +41,24 @@ struct PersistedData {
     
     private func updateDatabaseFromVersion(fromVersion: Int, toVersion: Int) throws {
         if fromVersion < 1 {
-            try connection.run(charicters.create(temporary: false, ifNotExists: true, block: { tableBuilder in
-                //create { tableBuilder in
+            try connection.run(charicters.create { tableBuilder in
                 tableBuilder.column(firstName, primaryKey:true)
                 tableBuilder.column(lastName)
                 tableBuilder.column(birthDate)
                 tableBuilder.column(pictureURL)
                 tableBuilder.column(affiliation)
                 tableBuilder.column(forceSensitive)
-            }))
+            })
             connection.userVersion = 1
         }
     }
     
-        private static func dbPath() -> String? {
-            if let appSupport = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first , (try? FileManager.default.createDirectory(atPath: appSupport, withIntermediateDirectories: true, attributes: nil)) != nil {
-                return appSupport + "/Charicters.sqlite"
-            }
-            
-            return nil
+    private static func dbPath() -> String? {
+        if let appSupport = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first , (try? FileManager.default.createDirectory(atPath: appSupport, withIntermediateDirectories: true, attributes: nil)) != nil {
+            return appSupport + "/Charicters.sqlite"
         }
-    
+        return nil
+    }
     
     func persistJSONCharicters(charactersJSON: [String: Any]) throws {
         try connection.transaction {

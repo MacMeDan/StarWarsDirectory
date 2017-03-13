@@ -9,7 +9,6 @@
 import UIKit
 
 import UIKit
-import StarWars
 
 class IntroViewController: UIViewController {
     
@@ -21,6 +20,10 @@ class IntroViewController: UIViewController {
         topContraint.isActive = false
     }
     
+    @IBAction func setupYourProfileTapped(_ sender: ProfileButton) {
+        sender.animateTouchUpInside {}
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -29,17 +32,4 @@ class IntroViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
-    
-    
-    
 }
-
-//extension IntroViewController: UIViewControllerTransitioningDelegate {
-//    
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        //        return StarWarsUIDynamicAnimator()
-//        //        return StarWarsUIViewAnimator()
-//        return StarWarsGLAnimator()
-//    }
-//}
-

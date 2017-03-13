@@ -23,7 +23,6 @@ enum API: URLConvertible {
         }
     }
     
-    
     private func getURL(path: String) throws -> URL {
         guard let url = URL(string: baseURL + path) else {
             throw APIError.invalidURL

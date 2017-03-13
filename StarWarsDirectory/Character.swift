@@ -14,7 +14,7 @@ struct Character {
     let forceSensitive: Bool
     let affiliation: String
     
-    init(firstName: String, lastName: String, birthDate: String, forceSensitive: Bool,picture:String, affiliation: String ) {
+    init(firstName: String, lastName: String, birthDate: String, forceSensitive: Bool, picture:String, affiliation: String ) {
         self.firstName      = firstName
         self.lastName       = lastName
         self.birthDate      = birthDate

@@ -54,18 +54,19 @@ class CharacterTableViewCell: UITableViewCell {
     
     func prepareMainLabel() {
         mainLabel.font = UIFont.systemFont(ofSize: 18)
-        mainLabel.textColor = UIColor.black
+        mainLabel.textColor = UIColor(string: "#d0d0d1")
         self.contentView.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { (make) in
             make.left.equalTo(70)
             make.right.equalTo(-10)
             make.height.equalTo(18)
-            make.top.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview().offset(-10)
         }
     }
     
     func prepareSubLabel() {
         subLabel.font = UIFont.systemFont(ofSize: 10)
+        subLabel.textColor = UIColor(string: "#4f4d51")
         subLabel.numberOfLines = 1
         contentView.addSubview(subLabel)
         subLabel.snp.makeConstraints { (make) in

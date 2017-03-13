@@ -11,43 +11,45 @@ import SnapKit
 
 private let TableViewOffset: CGFloat = UIScreen.main.bounds.height < 600 ? 215 : 225
 private let BeforeAppearOffset: CGFloat = 400
+private let rowHight: CGFloat = 60
+private let numberOfRows = 4
 
-class SettingsViewController: UITableViewController {
-    //fileprivate var backgroundHolder: UIView = UIView()
-    //fileprivate var backgroundImageView: UIImageView = UIImageView()
-    
-    var character: Character! 
-    
-    convenience init(character: Character) {
-        self.init(nibName: nil, bundle: nil)
-        self.character = character
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+class ProfileViewController: UITableViewController {
+
+    let reuseIdentifier = "ProfileCellIdentifier"
+    var character: Character!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareNavigationBar()
         prepareTable()
+    }
+    
+    fileprivate func prepareNavigationBar() {
+    navigationController!.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController!.navigationBar.shadowImage = UIImage()
+        navigationController!.navigationBar.isTranslucent = true
+        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "Close_icn"), style: .plain, target: self, action: #selector(dissmissView))
+        navigationItem.leftBarButtonItem = button
+        navigationItem.leftBarButtonItem?.tintColor = .white
+    }
+
+    func dissmissView() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func prepareTable() {
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        let imageURL = URL(string: character.picture)
+        let hight = self.view.bounds.height - rowHight * CGFloat(numberOfRows)
+        self.tableView.tableHeaderView  = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: hight), imageURL: imageURL)
         tableView.separatorColor = UIColor(string: "#1f1d22")
         tableView.removeLines()
         tableView.backgroundColor = .black
     }
     
-    func prepareTable() {
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        let imageURL = URL(string: character.picture)
-        let hight = self.view.bounds.height - 60 * 4
-        self.tableView.tableHeaderView  = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: hight), imageURL: imageURL)
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+        let cell =  UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
         cell.textLabel?.textColor = UIColor(string: "#4f4d51")
         cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
         cell.detailTextLabel?.textColor = UIColor(string: "#d0d0d1")
@@ -58,7 +60,7 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return numberOfRows
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -66,9 +68,8 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return rowHight
     }
-    
     
     func getTextForTextLabel(indexPath: IndexPath) -> String {
         switch indexPath.item {
@@ -104,5 +105,9 @@ class SettingsViewController: UITableViewController {
         let headerView = self.tableView.tableHeaderView as! HeaderView
         headerView.scrollViewDidScroll(scrollView: scrollView)
     }
-    
+
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
 }
+
