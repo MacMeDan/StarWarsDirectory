@@ -2,7 +2,7 @@
 //  UITableView.swift
 //  StarWarsDirectory
 //
-//  Created by P D Leonard on 3/8/17.
+//  Created by P D Leonard on 7/8/17.
 //  Copyright © 2017 MacMeDan. All rights reserved.
 //
 

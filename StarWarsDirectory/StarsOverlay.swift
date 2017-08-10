@@ -2,8 +2,8 @@
 //  StarsOverlay.swift
 //  StarWarsAnimations
 //
-//  Created by Artem Sidorenko on 9/11/15.
-//  Copyright © 2015 Yalantis. All rights reserved.
+//  Copyright © 2014 Yalantis
+//  Licensed under the MIT license: http://opensource.org/licenses/MIT
 //
 
 import UIKit

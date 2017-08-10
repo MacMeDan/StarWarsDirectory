@@ -54,7 +54,7 @@ class HeaderView: UIView {
         imageView.backgroundColor = UIColor.white
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.setRemoteImage(defaultImage: UIImage(), imageURL: imageURL)
+        imageView.setRemoteImage(defaultImage: UIImage(), imageURL: imageURL, completion: {_ in })
         containerView.addSubview(imageView)
         containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[imageView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["imageView" : imageView]))
         bottomLayoutConstraint = NSLayoutConstraint(item: imageView, attribute: .bottom, relatedBy: .equal, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0.0)

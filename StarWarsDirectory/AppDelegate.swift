@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  StarWarsDirectory
 //
-//  Created by P D Leonard on 3/8/17.
+//  Created by P D Leonard on 7/8/17.
 //  Copyright © 2017 MacMeDan. All rights reserved.
 //
 
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //PersistedData.shared?.deleteAllCharicters()
-        syncCharacters()
+        syncContacts()
         return true
     }
 

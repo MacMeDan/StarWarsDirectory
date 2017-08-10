@@ -2,7 +2,7 @@
 //  DirectoryTableViewController.swift
 //  StarWarsDirectory
 //
-//  Created by P D Leonard on 3/8/17.
+//  Created by P D Leonard on 7/8/17.
 //  Copyright © 2017 MacMeDan. All rights reserved.
 //
 
@@ -10,8 +10,8 @@ import UIKit
 import StarWars
 
 class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let reuseIdentifier = "characterCellIdentifier"
-    var characters = [Character]()
+    let reuseIdentifier = "cell"
+    var Contacts = [Contact]()
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,13 +21,12 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         tableView.dataSource = self
         perpareNavigationBar()
         perpareTable()
-        NotificationCenter.default.addObserver(self, selector: #selector(initialDataLoad), name: NSNotification.Name(rawValue: "PersistCharactersDidFinishNotification"), object: nil)
-        reloadDataWith(characters: PersistedData.shared?.allCharicters())
+        NotificationCenter.default.addObserver(self, selector: #selector(initialDataLoad), name: NSNotification.Name(rawValue: "PersistContactsDidFinishNotification"), object: nil)
+        reloadDataWith(Contacts: PersistedData.shared?.allContacts())
     }
     
     func perpareTable() {
-        title = "Character list"
-        tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.removeLines()
         tableView.separatorColor = UIColor(string: "#1f1d22")
     }
@@ -36,23 +35,47 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         navigationController!.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController!.navigationBar.shadowImage = UIImage()
         navigationController!.navigationBar.isTranslucent = true
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContact))
+        addButton.tintColor = UIColor.white
+        let item: UINavigationItem = UINavigationItem(title: "Contact list")
+            item.rightBarButtonItem = addButton
+        navigationController!.navigationBar.setItems([item], animated: false)
         navigationController!.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.white
         ]
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        //Keeps the stars form colliding
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.alpha = 0.0
+        })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.view.alpha = 1.0
+        })
+    }
+
+    
+    func addContact() {
+        navigationController?.pushViewController(AddContactViewController(), animated: true)
+    }
+    
     func initialDataLoad() {
         DispatchQueue.main.async {
-            self.reloadDataWith(characters: PersistedData.shared?.allCharicters())
+            self.reloadDataWith(Contacts: PersistedData.shared?.allContacts())
         }
     }
     
-    func reloadDataWith(characters: [Character]?) {
-        guard let characters = characters else {
-            self.characters = []
+    func reloadDataWith(Contacts: [Contact]?) {
+        guard let Contacts = Contacts else {
+            self.Contacts = []
             return
         }
-        self.characters = characters
+        self.Contacts = Contacts
         tableView.reloadData()
     }
     
@@ -63,20 +86,26 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+        return Contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? CharacterTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? ContactTableViewCell else {
             return UITableViewCell()
         }
         cell.backgroundColor = .clear
-        let character = characters[indexPath.item]
-        cell.mainLabel.text = character.firstName + " " + character.lastName
-        cell.subLabel.text = character.affiliation
-        let imageURL = URL(string: character.picture)
-        
-        cell.picture.setRemoteImage(defaultImage: UIImage(), imageURL: imageURL)
+        let contact = Contacts[indexPath.item]
+        cell.mainLabel.text = contact.firstName + " " + contact.lastName
+        cell.subLabel.text = contact.affiliation
+        if let pictureData = contact.picture {
+            cell.picture.image = UIImage(data: pictureData)
+        } else {
+            cell.picture.setRemoteImage(defaultImage: UIImage(), imageURL: URL(string:  contact.pictureURL), completion: { data in
+                if let data = data {
+                    PersistedData.shared?.updatePictureFor(contact: contact, with: data)
+                }
+            })
+        }
         return cell
     }
     
@@ -85,14 +114,14 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let character = characters[indexPath.item]
-        performSegue(withIdentifier: "showProfileView", sender: character)
+        let Contact = Contacts[indexPath.item]
+        performSegue(withIdentifier: "showProfileView", sender: Contact)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? UINavigationController, let charicter = sender as? Character, let settings = destination.topViewController as? ProfileViewController {
+        if let destination = segue.destination as? UINavigationController, let charicter = sender as? Contact, let settings = destination.topViewController as? ProfileViewController {
             destination.transitioningDelegate = self
-                settings.character = charicter
+                settings.Contact = charicter
         }
     }
     
@@ -100,12 +129,10 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         return true
     }
     
+   
 }
-
-extension DirectoryTableViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return StarWarsGLAnimator()
-    }
+// MARK: Dizolve Animation
+extension DirectoryTableViewController {
+    override func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? { return StarWarsGLAnimator() }
 }
 
