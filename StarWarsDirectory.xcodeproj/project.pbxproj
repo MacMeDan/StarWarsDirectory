@@ -438,7 +438,7 @@
 				DEVELOPMENT_TEAM = 4CRG3RCYD2;
 				INFOPLIST_FILE = StarWarsDirectory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MacmeDan.StarWarsDirectory;
+				PRODUCT_BUNDLE_IDENTIFIER = StarWarsDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -452,7 +452,7 @@
 				DEVELOPMENT_TEAM = 4CRG3RCYD2;
 				INFOPLIST_FILE = StarWarsDirectory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MacmeDan.StarWarsDirectory;
+				PRODUCT_BUNDLE_IDENTIFIER = StarWarsDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
