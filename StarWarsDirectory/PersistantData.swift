@@ -108,7 +108,7 @@ struct PersistedData {
     }
     
     func contactFromRow(row: Row) -> Contact {
-        return Contact(firstName: row[firstName], lastName: row[lastName] ?? "", birthDate: row[birthDate] ?? "",  forceSensitive: row[forceSensitive] ?? false, pictureURL: row[pictureURL] ?? "", picture: row[picture], affiliation: row[affiliation] ?? "", zip: row[zip], phoneNumber: row[phoneNumber])
+        return Contact(firstName: row[firstName], lastName: row[lastName] ?? "", birthDate: row[birthDate],  forceSensitive: row[forceSensitive] ?? false, pictureURL: row[pictureURL] ?? "", picture: row[picture], affiliation: row[affiliation], zip: row[zip], phoneNumber: row[phoneNumber])
     }
     
     func updatePictureFor(contact: Contact, with data: Data) {

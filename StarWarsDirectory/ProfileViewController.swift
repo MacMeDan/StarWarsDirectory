@@ -17,7 +17,7 @@ private var rows = [(String,String)]()
 class ProfileViewController: UITableViewController {
 
     let reuseIdentifier = "ProfileCellIdentifier"
-    var Contact: Contact!
+    var contact: Contact!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +41,18 @@ class ProfileViewController: UITableViewController {
     
     func prepareTable() {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        let imageURL = URL(string: Contact.pictureURL)
+        let imageURL = URL(string: contact.pictureURL)
         let hight = self.view.bounds.height - (rowHight * CGFloat(rows.count))
-        self.tableView.tableHeaderView  = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: hight), imageURL: imageURL)
+        
+        if let picData = contact.picture {
+            if let image = UIImage(data: picData) {
+                self.tableView.tableHeaderView  = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: hight), image: image)
+            }
+        } else {
+            self.tableView.tableHeaderView  = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: hight), imageURL: imageURL)
+        }
+        
+        
         tableView.separatorColor = UIColor(string: "#1f1d22")
         tableView.removeLines()
         tableView.backgroundColor = .black
@@ -76,13 +85,14 @@ class ProfileViewController: UITableViewController {
     func prepareData() {
         rows = []
         // Add all rows that are not optional
-        rows.append(("Full Name", Contact.firstName + " " + Contact.lastName))
-        
-        if let affiliation  = Contact.affiliation { rows.append(("Affiliation", affiliation)) }
-        if let birthDate    = Contact.birthDate   { rows.append(("BirthDate", birthDate)) }
-                                                    rows.append(("Force Sensitive", Contact.forceSensitive.description))
-        if let phoneNumber  = Contact.phoneNumber { rows.append(("PhoneNumber", phoneNumber.description))}
-        if let zip          = Contact.zip         { rows.append(("PhoneNumber", zip.description)) }
+        rows.append(("Full Name", contact.firstName + " " + contact.lastName))
+        let dateFormater = DateFormatter()
+        dateFormater.dateStyle = .short
+        if let affiliation  = contact.affiliation { rows.append(("Affiliation", affiliation)) }
+        if let birthDate    = contact.birthDate   { rows.append(("BirthDate", birthDate)) }
+                                                    rows.append(("Force Sensitive", contact.forceSensitive.description))
+        if let phoneNumber  = contact.phoneNumber { rows.append(("PhoneNumber", phoneNumber.description))}
+        if let zip          = contact.zip         { rows.append(("Zip", zip.description)) }
         tableView.reloadData()
     }
     

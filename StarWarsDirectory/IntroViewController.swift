@@ -32,4 +32,8 @@ class IntroViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
 }

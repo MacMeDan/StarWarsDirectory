@@ -58,6 +58,7 @@
 		375FFBD91E7210A000473E91 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		375FFBDB1E7210FF00473E91 /* AnimationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDelegate.swift; sourceTree = "<group>"; };
 		375FFBDF1E721ED200473E91 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		376184EA1F43AD320030C321 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		37D6876B1F3CDBDF00BC2541 /* AddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		5A0B03BFB75E8F44F741FAB9 /* Pods_StarWarsDirectory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsDirectory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		750AFF95E849256C3BF4ACCA /* Pods-StarWarsDirectory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsDirectory.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsDirectory/Pods-StarWarsDirectory.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 		BA949A4D93D6EDC5AF80D633 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				376184EA1F43AD320030C321 /* AVFoundation.framework */,
 				5A0B03BFB75E8F44F741FAB9 /* Pods_StarWarsDirectory.framework */,
 			);
 			name = Frameworks;

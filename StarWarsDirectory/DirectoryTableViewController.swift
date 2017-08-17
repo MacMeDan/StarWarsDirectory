@@ -21,8 +21,9 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         tableView.dataSource = self
         perpareNavigationBar()
         perpareTable()
-        NotificationCenter.default.addObserver(self, selector: #selector(initialDataLoad), name: NSNotification.Name(rawValue: "PersistContactsDidFinishNotification"), object: nil)
-        reloadDataWith(Contacts: PersistedData.shared?.allContacts())
+        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name(rawValue: "PersistContactsDidFinishNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name(rawValue: "newEntry"), object: nil)
+        loadData()
     }
     
     func perpareTable() {
@@ -64,12 +65,12 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         navigationController?.pushViewController(AddContactViewController(), animated: true)
     }
     
-    func initialDataLoad() {
+    func loadData() {
         DispatchQueue.main.async {
             self.reloadDataWith(Contacts: PersistedData.shared?.allContacts())
         }
     }
-    
+
     func reloadDataWith(Contacts: [Contact]?) {
         guard let Contacts = Contacts else {
             self.Contacts = []
@@ -121,15 +122,13 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? UINavigationController, let charicter = sender as? Contact, let settings = destination.topViewController as? ProfileViewController {
             destination.transitioningDelegate = self
-                settings.Contact = charicter
+                settings.contact = charicter
         }
     }
     
     override var prefersStatusBarHidden : Bool {
         return true
     }
-    
-   
 }
 // MARK: Dizolve Animation
 extension DirectoryTableViewController {
