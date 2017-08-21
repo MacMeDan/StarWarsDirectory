@@ -16,11 +16,9 @@
 		375E5B1B1E70AFCE000273D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375E5B191E70AFCE000273D3 /* Main.storyboard */; };
 		375E5B1D1E70AFCE000273D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375E5B1C1E70AFCE000273D3 /* Assets.xcassets */; };
 		375E5B201E70AFCE000273D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375E5B1E1E70AFCE000273D3 /* LaunchScreen.storyboard */; };
-		375E5B281E70B066000273D3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B271E70B066000273D3 /* API.swift */; };
 		375E5B2A1E70B379000273D3 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B291E70B379000273D3 /* Contact.swift */; };
 		375E5B2C1E70B81C000273D3 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B2B1E70B81C000273D3 /* ContactTableViewCell.swift */; };
 		375E5B2E1E70B85B000273D3 /* DirectoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B2D1E70B85B000273D3 /* DirectoryTableViewController.swift */; };
-		375E5B301E70B8B1000273D3 /* ContactWebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B2F1E70B8B1000273D3 /* ContactWebAPI.swift */; };
 		375E5B331E70D4CB000273D3 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B321E70D4CB000273D3 /* UIImageView.swift */; };
 		375E5B351E70E779000273D3 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B341E70E779000273D3 /* UITableView.swift */; };
 		375E5B371E70F059000273D3 /* PersistantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375E5B361E70F059000273D3 /* PersistantData.swift */; };
@@ -38,17 +36,15 @@
 		3743934A1E73722C00F34C8C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		375227251E766095005F7D60 /* CircularRevealAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularRevealAnimator.swift; sourceTree = "<group>"; };
 		375227291E81CDD8005F7D60 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		375E5B121E70AFCE000273D3 /* StarWarsDirectory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsDirectory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		375E5B121E70AFCE000273D3 /* StarWarsDirectory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = StarWarsDirectory.app; path = GalaticDirectory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		375E5B151E70AFCE000273D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		375E5B1A1E70AFCE000273D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		375E5B1C1E70AFCE000273D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		375E5B1F1E70AFCE000273D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		375E5B211E70AFCE000273D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		375E5B271E70B066000273D3 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		375E5B291E70B379000273D3 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Contact.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		375E5B2B1E70B81C000273D3 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContactTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		375E5B2D1E70B85B000273D3 /* DirectoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DirectoryTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		375E5B2F1E70B8B1000273D3 /* ContactWebAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContactWebAPI.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		375E5B321E70D4CB000273D3 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		375E5B341E70E779000273D3 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		375E5B361E70F059000273D3 /* PersistantData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistantData.swift; sourceTree = "<group>"; };
@@ -89,7 +85,7 @@
 		375E5B091E70AFCE000273D3 = {
 			isa = PBXGroup;
 			children = (
-				375E5B141E70AFCE000273D3 /* StarWarsDirectory */,
+				375E5B141E70AFCE000273D3 /* GalaticDirectory */,
 				375E5B131E70AFCE000273D3 /* Products */,
 				063B494B61CEBCA0C62AA76E /* Pods */,
 				BA949A4D93D6EDC5AF80D633 /* Frameworks */,
@@ -104,7 +100,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		375E5B141E70AFCE000273D3 /* StarWarsDirectory */ = {
+		375E5B141E70AFCE000273D3 /* GalaticDirectory */ = {
 			isa = PBXGroup;
 			children = (
 				375E5B151E70AFCE000273D3 /* AppDelegate.swift */,
@@ -122,6 +118,7 @@
 				375E5B1E1E70AFCE000273D3 /* LaunchScreen.storyboard */,
 				375E5B211E70AFCE000273D3 /* Info.plist */,
 			);
+			name = GalaticDirectory;
 			path = StarWarsDirectory;
 			sourceTree = "<group>";
 		};
@@ -150,8 +147,6 @@
 		375FFBDE1E7213F500473E91 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				375E5B271E70B066000273D3 /* API.swift */,
-				375E5B2F1E70B8B1000273D3 /* ContactWebAPI.swift */,
 				375E5B291E70B379000273D3 /* Contact.swift */,
 				375E5B2B1E70B81C000273D3 /* ContactTableViewCell.swift */,
 				375E5B361E70F059000273D3 /* PersistantData.swift */,
@@ -171,9 +166,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		375E5B111E70AFCE000273D3 /* StarWarsDirectory */ = {
+		375E5B111E70AFCE000273D3 /* GalaticDirectory */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 375E5B241E70AFCE000273D3 /* Build configuration list for PBXNativeTarget "StarWarsDirectory" */;
+			buildConfigurationList = 375E5B241E70AFCE000273D3 /* Build configuration list for PBXNativeTarget "GalaticDirectory" */;
 			buildPhases = (
 				FC5B6B9B2E2631E36F5EBF5C /* [CP] Check Pods Manifest.lock */,
 				375E5B0E1E70AFCE000273D3 /* Sources */,
@@ -186,7 +181,7 @@
 			);
 			dependencies = (
 			);
-			name = StarWarsDirectory;
+			name = GalaticDirectory;
 			productName = StarWarsDirectory;
 			productReference = 375E5B121E70AFCE000273D3 /* StarWarsDirectory.app */;
 			productType = "com.apple.product-type.application";
@@ -208,7 +203,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 375E5B0D1E70AFCE000273D3 /* Build configuration list for PBXProject "StarWarsDirectory" */;
+			buildConfigurationList = 375E5B0D1E70AFCE000273D3 /* Build configuration list for PBXProject "GalaticDirectory" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -221,7 +216,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				375E5B111E70AFCE000273D3 /* StarWarsDirectory */,
+				375E5B111E70AFCE000273D3 /* GalaticDirectory */,
 			);
 		};
 /* End PBXProject section */
@@ -295,7 +290,6 @@
 				375FFBDC1E7210FF00473E91 /* AnimationDelegate.swift in Sources */,
 				375E5B2E1E70B85B000273D3 /* DirectoryTableViewController.swift in Sources */,
 				374393491E735A5200F34C8C /* StarsOverlay.swift in Sources */,
-				375E5B281E70B066000273D3 /* API.swift in Sources */,
 				375FFBD81E72106400473E91 /* View.swift in Sources */,
 				37D6876C1F3CDBDF00BC2541 /* AddContactViewController.swift in Sources */,
 				3743934B1E73722C00F34C8C /* HeaderView.swift in Sources */,
@@ -308,7 +302,6 @@
 				375E5B2A1E70B379000273D3 /* Contact.swift in Sources */,
 				3752272A1E81CDD8005F7D60 /* README.md in Sources */,
 				375E5B351E70E779000273D3 /* UITableView.swift in Sources */,
-				375E5B301E70B8B1000273D3 /* ContactWebAPI.swift in Sources */,
 				375227261E766095005F7D60 /* CircularRevealAnimator.swift in Sources */,
 				375FFBDA1E7210A000473E91 /* UIColor.swift in Sources */,
 				375E5B2C1E70B81C000273D3 /* ContactTableViewCell.swift in Sources */,
@@ -438,7 +431,7 @@
 				DEVELOPMENT_TEAM = 4CRG3RCYD2;
 				INFOPLIST_FILE = StarWarsDirectory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = StarWarsDirectory;
+				PRODUCT_BUNDLE_IDENTIFIER = GalaticDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -452,7 +445,7 @@
 				DEVELOPMENT_TEAM = 4CRG3RCYD2;
 				INFOPLIST_FILE = StarWarsDirectory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = StarWarsDirectory;
+				PRODUCT_BUNDLE_IDENTIFIER = GalaticDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -461,7 +454,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		375E5B0D1E70AFCE000273D3 /* Build configuration list for PBXProject "StarWarsDirectory" */ = {
+		375E5B0D1E70AFCE000273D3 /* Build configuration list for PBXProject "GalaticDirectory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				375E5B221E70AFCE000273D3 /* Debug */,
@@ -470,7 +463,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		375E5B241E70AFCE000273D3 /* Build configuration list for PBXNativeTarget "StarWarsDirectory" */ = {
+		375E5B241E70AFCE000273D3 /* Build configuration list for PBXNativeTarget "GalaticDirectory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				375E5B251E70AFCE000273D3 /* Debug */,

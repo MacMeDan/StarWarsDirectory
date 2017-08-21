@@ -21,12 +21,11 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         tableView.dataSource = self
         perpareNavigationBar()
         perpareTable()
-        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name(rawValue: "PersistContactsDidFinishNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name(rawValue: "newEntry"), object: nil)
         loadData()
     }
     
-    func perpareTable() {
+    fileprivate func perpareTable() {
         tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.removeLines()
         tableView.separatorColor = UIColor(string: "#1f1d22")
@@ -61,17 +60,17 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     
-    func addContact() {
+    internal func addContact() {
         navigationController?.pushViewController(AddContactViewController(), animated: true)
     }
     
-    func loadData() {
+    internal func loadData() {
         DispatchQueue.main.async {
             self.reloadDataWith(Contacts: PersistedData.shared?.allContacts())
         }
     }
 
-    func reloadDataWith(Contacts: [Contact]?) {
+    fileprivate func reloadDataWith(Contacts: [Contact]?) {
         guard let Contacts = Contacts else {
             self.Contacts = []
             return
@@ -97,7 +96,7 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         cell.backgroundColor = .clear
         let contact = Contacts[indexPath.item]
         cell.mainLabel.text = contact.firstName + " " + contact.lastName
-        cell.subLabel.text = contact.affiliation
+        cell.subLabel.text = contact.zip?.description ?? ""
         if let pictureData = contact.picture {
             cell.picture.image = UIImage(data: pictureData)
         } else {

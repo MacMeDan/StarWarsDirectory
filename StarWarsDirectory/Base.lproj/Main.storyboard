@@ -17,7 +17,7 @@
         <!--Intro View Controller-->
         <scene sceneID="Ene-A4-8mP">
             <objects>
-                <viewController id="bnn-Ye-IvX" customClass="IntroViewController" customModule="StarWarsDirectory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bnn-Ye-IvX" customClass="IntroViewController" customModule="GalaticDirectory" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZM4-tj-1nv"/>
                         <viewControllerLayoutGuide type="bottom" id="bRp-i7-fRY"/>
@@ -26,17 +26,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YC-dU-sB6" customClass="StarsOverlay" customModule="StarWarsDirectory" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YC-dU-sB6" customClass="StarsOverlay" customModule="GalaticDirectory" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GREETINGS," textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gr-W2-N35">
-                                        <rect key="frame" x="132" y="312" width="112.5" height="22.5"/>
+                                        <rect key="frame" x="132" y="380" width="112.5" height="22.5"/>
                                         <fontDescription key="fontDescription" name="GothamPro" family="Gotham Pro" pointSize="19"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEk-7l-IU4" customClass="ProfileButton" customModule="StarWarsDirectory" customModuleProvider="target">
-                                        <rect key="frame" x="97.5" y="400.5" width="180" height="54"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEk-7l-IU4" customClass="ProfileButton" customModule="GalaticDirectory" customModuleProvider="target">
+                                        <rect key="frame" x="122.5" y="468.5" width="130" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="Pgm-f0-JzG"/>
                                         </constraints>
@@ -52,7 +52,7 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="1" green="0.90980392160000001" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -60,23 +60,26 @@
                                             <segue destination="3iW-hG-QUj" kind="show" identifier="showList" id="NOe-cO-IyT"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_wars_logo" translatesAutoresizingMaskIntoConstraints="NO" id="1lT-1T-qRj">
-                                        <rect key="frame" x="63" y="133" width="250" height="107"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from far far away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xk4-uP-whm">
-                                        <rect key="frame" x="116" y="342.5" width="143" height="23"/>
+                                        <rect key="frame" x="116" y="410.5" width="143" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="Galatic Directory" translatesAutoresizingMaskIntoConstraints="NO" id="Fdk-0f-84e">
+                                        <rect key="frame" x="33" y="113" width="310" height="214"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="310" id="Jjb-QP-RKj"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="1lT-1T-qRj" firstAttribute="centerX" secondItem="6YC-dU-sB6" secondAttribute="centerX" id="0ls-Dt-ykI"/>
-                                    <constraint firstItem="9gr-W2-N35" firstAttribute="top" secondItem="1lT-1T-qRj" secondAttribute="bottom" constant="72" id="5CV-pS-BhH"/>
-                                    <constraint firstItem="1lT-1T-qRj" firstAttribute="top" secondItem="6YC-dU-sB6" secondAttribute="top" constant="133" id="KJO-C4-A0r"/>
+                                    <constraint firstItem="Fdk-0f-84e" firstAttribute="centerX" secondItem="6YC-dU-sB6" secondAttribute="centerX" id="CPE-l1-ZdT"/>
+                                    <constraint firstItem="Fdk-0f-84e" firstAttribute="top" secondItem="6YC-dU-sB6" secondAttribute="top" constant="113" id="KFt-lR-9pC"/>
                                     <constraint firstItem="Xk4-uP-whm" firstAttribute="centerX" secondItem="6YC-dU-sB6" secondAttribute="centerX" id="Lhi-oM-oWV"/>
                                     <constraint firstItem="fEk-7l-IU4" firstAttribute="top" secondItem="6YC-dU-sB6" secondAttribute="top" priority="250" constant="-100" id="M0C-JU-EZv"/>
+                                    <constraint firstItem="9gr-W2-N35" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Fdk-0f-84e" secondAttribute="bottom" constant="53" id="NUt-dI-4Xo"/>
                                     <constraint firstItem="Xk4-uP-whm" firstAttribute="top" secondItem="9gr-W2-N35" secondAttribute="bottom" constant="8" id="igl-cL-1Qh"/>
                                     <constraint firstItem="fEk-7l-IU4" firstAttribute="centerX" secondItem="6YC-dU-sB6" secondAttribute="centerX" id="k9B-Zp-e4p"/>
                                     <constraint firstItem="fEk-7l-IU4" firstAttribute="top" secondItem="Xk4-uP-whm" secondAttribute="bottom" constant="35" id="vTK-ET-C6w"/>
@@ -94,7 +97,7 @@
                     </view>
                     <connections>
                         <outlet property="button" destination="fEk-7l-IU4" id="8VU-4H-GrB"/>
-                        <outlet property="topContraint" destination="KJO-C4-A0r" id="YFh-pB-cCZ"/>
+                        <outlet property="topContraint" destination="KFt-lR-9pC" id="0Rm-WU-nr8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTa-HC-eAU" sceneMemberID="firstResponder"/>
@@ -104,7 +107,7 @@
         <!--Directory Table View Controller-->
         <scene sceneID="98R-76-xXn">
             <objects>
-                <viewController id="xWt-3H-9Fi" customClass="DirectoryTableViewController" customModule="StarWarsDirectory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xWt-3H-9Fi" customClass="DirectoryTableViewController" customModule="GalaticDirectory" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jw6-Lt-IlL"/>
                         <viewControllerLayoutGuide type="bottom" id="hvr-xE-E9g"/>
@@ -113,7 +116,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncT-KC-r6C" customClass="StarsOverlay" customModule="StarWarsDirectory" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncT-KC-r6C" customClass="StarsOverlay" customModule="GalaticDirectory" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bp4-Jc-fYr">
@@ -164,7 +167,7 @@
         <!--Profile View Controller-->
         <scene sceneID="N1k-UE-n9D">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="BMl-8D-Bt7" customClass="ProfileViewController" customModule="StarWarsDirectory" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="BMl-8D-Bt7" customClass="ProfileViewController" customModule="GalaticDirectory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="awc-mM-LLB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -225,6 +228,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="star_wars_logo" width="250" height="107"/>
+        <image name="Galatic Directory" width="408" height="214"/>
     </resources>
 </document>

@@ -50,8 +50,8 @@ class AddContactViewController: UIViewController {
     }
     
     func prepareView() {
-        hideKeyboardWhenTappedAround()
         view = StarsOverlay(frame: view.frame)
+        hideKeyboardWhenTappedAround()
         contentView = UIStackView(arrangedSubviews: [firstNameField, lastNameField, zipField, phoneField, birthdayButton, forceField])
         contentView.axis = .vertical
         contentView.spacing = 25
@@ -93,7 +93,7 @@ class AddContactViewController: UIViewController {
         }
     }
     
-    func preparePhoneFeild() {
+    internal func preparePhoneFeild() {
         phoneField = getStyledTextFeild(placeHolderText: "Phone Number")
         phoneField.keyboardType = .namePhonePad
         //Give visual feedback on weither or not the input is valid
@@ -104,7 +104,7 @@ class AddContactViewController: UIViewController {
         }
     }
     
-    func formatPhoneNumber(phoneNumber: String?) -> String? {
+    internal func formatPhoneNumber(phoneNumber: String?) -> String? {
         if let number = phoneNumber {
             if number.characters.count > 10 || number.characters.count < 6 {
                 return number
@@ -254,7 +254,8 @@ extension AddContactViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return false
+        dismissKeyboard()
+        return true
     }
     
     func hideKeyboardWhenTappedAround() {
@@ -304,7 +305,7 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func choosePhotoFromLibrary() {
+    internal func choosePhotoFromLibrary() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
@@ -312,7 +313,7 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func newImgTapped(sender: FABButton) {
+    internal func newImgTapped(sender: FABButton) {
         let imgPicker = UIImagePickerController()
         imgPicker.delegate = self
         let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
@@ -364,7 +365,7 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.contactImage.setImage(image, for: .normal)
             self.pictureData = UIImagePNGRepresentation(image)
@@ -374,11 +375,11 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func presentAlert(sender: UIAlertController) {
+    internal func presentAlert(sender: UIAlertController) {
         present(sender, animated: false, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
 }
