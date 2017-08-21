@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_StarWarsDirectoryVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_StarWarsDirectoryVersionString[];
+FOUNDATION_EXPORT double Pods_GalacticDirectoryVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_GalacticDirectoryVersionString[];
 

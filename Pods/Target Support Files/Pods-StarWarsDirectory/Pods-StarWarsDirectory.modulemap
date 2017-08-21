@@ -1,5 +1,5 @@
-framework module Pods_StarWarsDirectory {
-  umbrella header "Pods-StarWarsDirectory-umbrella.h"
+framework module Pods_GalacticDirectory {
+  umbrella header "Pods-GalacticDirectory-umbrella.h"
 
   export *
   module * { export * }

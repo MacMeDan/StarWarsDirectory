@@ -1,6 +1,6 @@
 //
 //  initalScreen.swift
-//  StarWarsDirectory
+//  GalacticDirectory
 //
 //  Created by P D Leonard on 3/9/17.
 //  Copyright © 2017 MacMeDan. All rights reserved.

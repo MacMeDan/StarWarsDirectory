@@ -1,6 +1,6 @@
 //
 //  AddContactViewController.swift
-//  StarWarsDirectory
+//  GalacticDirectory
 //
 //  Created by Dan Leonard on 8/10/17.
 //  Copyright © 2017 MacMeDan. All rights reserved.
@@ -18,12 +18,10 @@ class AddContactViewController: UIViewController {
     var lastNameField:  TextField!
     var zipField:       TextField!
     var phoneField:     TextField!
-    var forceField:     View!
     var birthdayButton: FlatButton!
     var overlay:        View!
     let datePicker =    UIDatePicker()
-    
-    let forceSwitch =   Switch()
+
     var forceSensitive: Bool = false
     var birthDate:      String?
     var pictureData:    Data?
@@ -39,7 +37,6 @@ class AddContactViewController: UIViewController {
         view = scrollView
         prepareNavigation()
         prepareFields()
-        prepareForceField()
         prepareBirthdayButton()
         prepareView()
         prepareImageSelector()
@@ -52,7 +49,7 @@ class AddContactViewController: UIViewController {
     func prepareView() {
         view = StarsOverlay(frame: view.frame)
         hideKeyboardWhenTappedAround()
-        contentView = UIStackView(arrangedSubviews: [firstNameField, lastNameField, zipField, phoneField, birthdayButton, forceField])
+        contentView = UIStackView(arrangedSubviews: [firstNameField, lastNameField, zipField, phoneField, birthdayButton])
         contentView.axis = .vertical
         contentView.spacing = 25
         contentView.distribution = .fill
@@ -77,10 +74,22 @@ class AddContactViewController: UIViewController {
     }
     
     func prepareFields() {
-        firstNameField = getStyledTextFeild(placeHolderText: "First Name")
+        prepareFirstNameFeild()
         lastNameField = getStyledTextFeild(placeHolderText: "Last Name")
         prepareZipFeild()
         preparePhoneFeild()
+    }
+    
+    fileprivate func prepareFirstNameFeild () {
+        firstNameField = getStyledTextFeild(placeHolderText: "First Name")
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: firstNameField, queue: OperationQueue.main) { (Notification) in
+            guard let text = self.firstNameField.text else { return }
+            if text.characters.count > 0 {
+                self.saveButton.isEnabled = true
+                self.saveButton.setTitleColor(Color.red.base, for: .normal)
+            }
+        }
     }
     
     func prepareZipFeild() {
@@ -119,23 +128,6 @@ class AddContactViewController: UIViewController {
         return phoneNumber
     }
     
-    func prepareForceField() {
-        forceField = View(frame: CGRect(x: 0, y: 0, width: view.width, height: 40))
-        forceField.backgroundColor = UIColor.clear
-        forceSwitch.buttonOnColor = Color.yellow.base
-        forceSwitch.trackOnColor = Color.yellow.lighten4
-        forceField.layout(forceSwitch).centerVertically().right(10)
-        let label = UILabel(frame: .zero)
-        label.text = "Force Sensitive"
-        label.textColor = UIColor.white.withAlphaComponent(0.7)
-        forceField.layout(label).centerVertically().left(10).right(50)
-        forceSwitch.addTarget(self, action: #selector(forceSwitchAction), for: .valueChanged)
-    }
-    
-    func forceSwitchAction() {
-        forceSensitive = forceSwitch.isOn
-    }
-    
     func prepareBirthdayButton() {
         birthdayButton = FlatButton(title: "Add Birthday", titleColor: UIColor.white.withAlphaComponent(0.7))
         birthdayButton.backgroundColor = .clear
@@ -143,6 +135,7 @@ class AddContactViewController: UIViewController {
     }
     
     func addBirthdayAction() {
+        dismissKeyboard()
         overlay.isHidden = !overlay.isHidden
     }
     
@@ -195,7 +188,8 @@ class AddContactViewController: UIViewController {
     
     func prepareSaveButton() {
         saveButton.setTitle("Save", for: .normal)
-        saveButton.titleColor = Color.yellow.base
+        saveButton.titleColor = Color.grey.base
+        saveButton.isEnabled = false
         saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         view.layout(saveButton).bottom(20).right(30)
     }

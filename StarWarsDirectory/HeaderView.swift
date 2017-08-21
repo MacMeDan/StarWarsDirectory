@@ -1,6 +1,6 @@
 //
 //  HeaderView.swift
-//  StarWarsDirectory
+//  GalacticDirectory
 //
 //  Created by P D Leonard on 3/10/17.
 //  Copyright © 2017 MacMeDan. All rights reserved.
@@ -16,7 +16,7 @@ class HeaderView: UIView {
     var containerView = UIView()
     var containerLayoutConstraint = NSLayoutConstraint()
     var imageURL: URL?
-    var image: UIImage!
+    var image: UIImage = #imageLiteral(resourceName: "BlankAvatar")
     
     convenience init(frame: CGRect, imageURL: URL?) {
         self.init(frame: frame)

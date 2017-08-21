@@ -1,6 +1,6 @@
 //
 //  SettingsViewController.swift
-//  StarWarsDirectory
+//  GalacticDirectory
 //
 //  Created by P D Leonard on 3/9/17.
 //  Copyright © 2017 MacMeDan. All rights reserved.
@@ -88,9 +88,9 @@ class ProfileViewController: UITableViewController {
         rows.append(("Full Name", contact.firstName + " " + contact.lastName))
         let dateFormater = DateFormatter()
         dateFormater.dateStyle = .short
-        if let affiliation  = contact.affiliation { rows.append(("Affiliation", affiliation)) }
+//        if let affiliation  = contact.affiliation { rows.append(("Affiliation", affiliation)) }
         if let birthDate    = contact.birthDate   { rows.append(("BirthDate", birthDate)) }
-                                                    rows.append(("Force Sensitive", contact.forceSensitive.description))
+//                                                    rows.append(("Force Sensitive", contact.forceSensitive.description))
         if let phoneNumber  = contact.phoneNumber { rows.append(("PhoneNumber", phoneNumber.description))}
         if let zip          = contact.zip         { rows.append(("Zip", zip.description)) }
         tableView.reloadData()
