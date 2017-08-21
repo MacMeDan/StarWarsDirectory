@@ -26,8 +26,6 @@ class AddContactViewController: UIViewController {
     var birthDate:      String?
     var pictureData:    Data?
     var affiliation:    String?
-    var zip:            Int?
-    var phoneNumber:    Int?
     var contactImage:   FABButton!
     let saveButton:     FlatButton = FlatButton()
     
@@ -195,7 +193,7 @@ class AddContactViewController: UIViewController {
     }
     
     func saveAction() {
-        let contact = Contact(firstName: firstNameField.text!, lastName: lastNameField.text!, birthDate: birthDate, forceSensitive: forceSensitive, pictureURL: "", picture: pictureData, affiliation: nil, zip: zip, phoneNumber: phoneNumber)
+        let contact = Contact(firstName: firstNameField.text!, lastName: lastNameField.text!, birthDate: birthDate, forceSensitive: forceSensitive, pictureURL: "", picture: pictureData, affiliation: nil, zip: zipField.text, phoneNumber: phoneField.text)
         
         try? PersistedData.shared?.add(contact: contact)
 
