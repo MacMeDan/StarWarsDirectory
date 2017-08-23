@@ -1,10 +1,15 @@
 # StarWarsDirectory
 
-A simple application with the theme of StarWars. It demonstrates pulling data from an API and saving it to a local `SQL` database. 
-It also incorperates a few visual effects, enjoy.
+A example application that has been themed with `Star Wars`
+
+Demonstrates:
+- Pulling data from an API
+- Saving data localy to a `SQL` database
+- Some sweet transitions
+- Radial button effects
+
+
 <br>
-
-## Sneek peek
+## Sneak peek
 <img src="https://github.com/MacMeDan/StarWarsDirectory/blob/master/Media/StarWarsDirectory.gif" width=40%>
-
 <br>
