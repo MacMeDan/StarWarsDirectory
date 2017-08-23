@@ -11,7 +11,7 @@ import SnapKit
 
 private let TableViewOffset: CGFloat = UIScreen.main.bounds.height < 600 ? 215 : 225
 private let BeforeAppearOffset: CGFloat = 400
-private let rowHight: CGFloat = 40
+private let rowHight: CGFloat = 60
 private var rows = [(String,String)]()
 
 class ProfileViewController: UITableViewController {
@@ -91,8 +91,8 @@ class ProfileViewController: UITableViewController {
         if let affiliation  = contact.affiliation { rows.append(("Affiliation", affiliation)) }
         if let birthDate    = contact.birthDate   { rows.append(("BirthDate", birthDate)) }
                                                     rows.append(("Force Sensitive", contact.forceSensitive.description))
-        if let phoneNumber  = contact.phoneNumber { rows.append(("PhoneNumber", phoneNumber.description))}
-        if let zip          = contact.zip         { rows.append(("Zip", zip.description)) }
+        if let phoneNumber  = contact.phoneNumber { rows.append(("PhoneNumber", phoneNumber))}
+        if let zip          = contact.zip         { rows.append(("Zip", zip)) }
         tableView.reloadData()
     }
     

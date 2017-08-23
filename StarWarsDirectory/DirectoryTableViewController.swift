@@ -26,7 +26,7 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         loadData()
     }
     
-    func perpareTable() {
+    fileprivate func perpareTable() {
         tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.removeLines()
         tableView.separatorColor = UIColor(string: "#1f1d22")
@@ -61,17 +61,17 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     
-    func addContact() {
+    internal func addContact() {
         navigationController?.pushViewController(AddContactViewController(), animated: true)
     }
     
-    func loadData() {
+    internal func loadData() {
         DispatchQueue.main.async {
             self.reloadDataWith(contacts: PersistedData.shared?.allContacts())
         }
     }
 
-    func reloadDataWith(contacts: [Contact]?) {
+    fileprivate func reloadDataWith(contacts: [Contact]?) {
         guard let contacts = contacts else {
             self.contacts = []
             return
@@ -97,11 +97,11 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         cell.backgroundColor = .clear
         let contact = contacts[indexPath.item]
         cell.mainLabel.text = contact.firstName + " " + contact.lastName
-        cell.subLabel.text = contact.affiliation
+        cell.subLabel.text = contact.affiliation ?? contact.zip
         if let pictureData = contact.picture {
             cell.picture.image = UIImage(data: pictureData)
         } else {
-            cell.picture.setRemoteImage(defaultImage: UIImage(), imageURL: URL(string:  contact.pictureURL), completion: { data in
+            cell.picture.setRemoteImage(defaultImage: #imageLiteral(resourceName: "BlankAvatar"), imageURL: URL(string:  contact.pictureURL), completion: { data in
                 if let data = data {
                     PersistedData.shared?.updatePictureFor(contact: contact, with: data)
                 }

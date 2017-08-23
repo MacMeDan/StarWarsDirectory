@@ -151,6 +151,7 @@ class AddContactViewController: UIViewController {
     }
     
     func addBirthdayAction() {
+        dismissKeyboard()
         overlay.isHidden = !overlay.isHidden
     }
     
@@ -211,7 +212,9 @@ class AddContactViewController: UIViewController {
     }
     
     func saveAction() {
-        let contact = Contact(firstName: firstNameField.text!, lastName: lastNameField.text!, birthDate: birthDate, forceSensitive: forceSensitive, pictureURL: "", picture: pictureData, zip: zipField.text, phoneNumber: formatPhoneNumber(phoneNumber: phoneField.text))
+        let phoneNumber = phoneField.text == "" ? nil : formatPhoneNumber(phoneNumber:phoneField.text)
+        let zip = zipField.text == "" ? nil : zipField.text
+        let contact = Contact(firstName: firstNameField.text!, lastName: lastNameField.text!, birthDate: birthDate, forceSensitive: forceSensitive, pictureURL: "", picture: pictureData, zip: zip, phoneNumber: phoneNumber)
         
         try? PersistedData.shared?.add(contact: contact)
 
@@ -315,7 +318,7 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func choosePhotoFromLibrary() {
+    internal func choosePhotoFromLibrary() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
@@ -323,7 +326,7 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func newImgTapped(sender: FABButton) {
+    internal func newImgTapped(sender: FABButton) {
         let imgPicker = UIImagePickerController()
         imgPicker.delegate = self
         let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
@@ -375,7 +378,7 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.contactImage.setImage(image, for: .normal)
             self.pictureData = UIImagePNGRepresentation(image)
@@ -385,11 +388,11 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func presentAlert(sender: UIAlertController) {
+    internal func presentAlert(sender: UIAlertController) {
         present(sender, animated: false, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
 }

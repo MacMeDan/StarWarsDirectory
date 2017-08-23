@@ -16,7 +16,7 @@ class HeaderView: UIView {
     var containerView = UIView()
     var containerLayoutConstraint = NSLayoutConstraint()
     var imageURL: URL?
-    var image: UIImage!
+    var image: UIImage = #imageLiteral(resourceName: "BlankAvatar")
     
     convenience init(frame: CGRect, imageURL: URL?) {
         self.init(frame: frame)
@@ -61,7 +61,7 @@ class HeaderView: UIView {
         
         let imageView: UIImageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = UIColor.white
+        imageView.backgroundColor = UIColor.black
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         if imageURL == nil {

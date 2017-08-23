@@ -18,7 +18,7 @@ struct Contact {
     let phoneNumber:    String?
     let zip:            String?
     
-    init(firstName: String, lastName: String, birthDate: String?, forceSensitive: Bool = false, pictureURL: String, picture: Data? = nil, affiliation: String? = nil, zip: String?, phoneNumber: String?) {
+    init(firstName: String, lastName: String, birthDate: String?, forceSensitive: Bool = false, pictureURL: String, picture: Data? = nil, affiliation: String? = nil, zip: String? = nil, phoneNumber: String? = nil) {
         self.firstName      = firstName
         self.lastName       = lastName
         self.birthDate      = birthDate
