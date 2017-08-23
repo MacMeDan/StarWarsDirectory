@@ -28,8 +28,6 @@ class AddContactViewController: UIViewController {
     var birthDate:      String?
     var pictureData:    Data?
     var affiliation:    String?
-    var zip:            Int?
-    var phoneNumber:    Int?
     var contactImage:   FABButton!
     let saveButton:     FlatButton = FlatButton()
     
@@ -49,9 +47,9 @@ class AddContactViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
     
-    func prepareView() {
-        hideKeyboardWhenTappedAround()
+    fileprivate func prepareView() {
         view = StarsOverlay(frame: view.frame)
+        hideKeyboardWhenTappedAround()
         contentView = UIStackView(arrangedSubviews: [firstNameField, lastNameField, zipField, phoneField, birthdayButton, forceField])
         contentView.axis = .vertical
         contentView.spacing = 25
@@ -72,31 +70,41 @@ class AddContactViewController: UIViewController {
         self.view.alpha = 1.0
     }
     
-    func prepareNavigation() {
+    fileprivate func prepareNavigation() {
         navigationController?.navigationBar.tintColor = .white
     }
     
-    func prepareFields() {
-        firstNameField = getStyledTextFeild(placeHolderText: "First Name")
-        lastNameField = getStyledTextFeild(placeHolderText: "Last Name")
-        prepareZipFeild()
-        preparePhoneFeild()
+    fileprivate func prepareFields() {
+        prepareFirstNameField()
+        lastNameField = getStyledTextField(placeHolderText: "Last Name")
+        prepareZipField()
+        preparePhoneField()
     }
     
-    func prepareZipFeild() {
-        zipField = getStyledTextFeild(placeHolderText: "Zip")
+    fileprivate func prepareFirstNameField() {
+        firstNameField = getStyledTextField(placeHolderText: "First Name")
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: firstNameField, queue: OperationQueue.main) { (Notification) in
+            guard let text = self.firstNameField.text else { return }
+            if text.characters.count > 0 {
+                self.saveButton.isEnabled = true
+            }
+        }
+    }
+
+    fileprivate func prepareZipField() {
+        zipField = getStyledTextField(placeHolderText: "Zip")
         zipField.keyboardType = .namePhonePad
-        //Give visual feedback on weither or not the input is valid
+        // Give visual feedback on weither or not the input is valid
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: zipField, queue: OperationQueue.main) { (Notification) in
             guard let text = self.zipField.text else { return }
             self.zipField.dividerActiveColor = text.rangeOfCharacter(from: CharacterSet.letters) == nil ? Color.blue.base : Color.red.base
         }
     }
     
-    func preparePhoneFeild() {
-        phoneField = getStyledTextFeild(placeHolderText: "Phone Number")
+    fileprivate func preparePhoneField() {
+        phoneField = getStyledTextField(placeHolderText: "Phone Number")
         phoneField.keyboardType = .namePhonePad
-        //Give visual feedback on weither or not the input is valid
+        // Give visual feedback on weither or not the input is valid
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: phoneField, queue: OperationQueue.main) { (Notification) in
             guard let text = self.phoneField.text else { return }
             self.phoneField.dividerActiveColor = text.rangeOfCharacter(from: CharacterSet.letters) == nil ? Color.blue.base : Color.red.base
@@ -104,7 +112,7 @@ class AddContactViewController: UIViewController {
         }
     }
     
-    func formatPhoneNumber(phoneNumber: String?) -> String? {
+    fileprivate func formatPhoneNumber(phoneNumber: String?) -> String? {
         if let number = phoneNumber {
             if number.characters.count > 10 || number.characters.count < 6 {
                 return number
@@ -119,7 +127,7 @@ class AddContactViewController: UIViewController {
         return phoneNumber
     }
     
-    func prepareForceField() {
+    fileprivate func prepareForceField() {
         forceField = View(frame: CGRect(x: 0, y: 0, width: view.width, height: 40))
         forceField.backgroundColor = UIColor.clear
         forceSwitch.buttonOnColor = Color.yellow.base
@@ -136,7 +144,7 @@ class AddContactViewController: UIViewController {
         forceSensitive = forceSwitch.isOn
     }
     
-    func prepareBirthdayButton() {
+    fileprivate func prepareBirthdayButton() {
         birthdayButton = FlatButton(title: "Add Birthday", titleColor: UIColor.white.withAlphaComponent(0.7))
         birthdayButton.backgroundColor = .clear
         birthdayButton.addTarget(self, action: #selector(addBirthdayAction), for: .touchUpInside)
@@ -146,7 +154,7 @@ class AddContactViewController: UIViewController {
         overlay.isHidden = !overlay.isHidden
     }
     
-    func prepareBirthdayOverlay() {
+    fileprivate func prepareBirthdayOverlay() {
         overlay = View(frame: view.frame)
         overlay.backgroundColor = UIColor.black.withAlphaComponent(0.9)
         overlay.layout(datePicker).center().left(20).right(20)
@@ -171,7 +179,7 @@ class AddContactViewController: UIViewController {
         overlay.isHidden = true
     }
     
-    func prepareImageSelector() {
+    fileprivate func prepareImageSelector() {
         contactImage = FABButton()
         contactImage.setTitle("Add Image", for: .normal)
         contactImage.titleColor = .white
@@ -182,26 +190,28 @@ class AddContactViewController: UIViewController {
         contactImage.cornerRadius = contactImage.height/2
     }
     
-    func getStyledTextFeild(placeHolderText: String) -> TextField {
-        let feild = TextField(frame: CGRect(x: 0, y: 0, width: view.width, height: 40))
-        feild.dividerNormalColor = Color.grey.lighten2.withAlphaComponent(0.4)
-        feild.placeholderNormalColor = Color.white.withAlphaComponent(0.7)
-        feild.textColor = .white
-        feild.placeholder = placeHolderText
-        feild.delegate = self
-        feild.translatesAutoresizingMaskIntoConstraints = false
-        return feild
+    fileprivate func getStyledTextField(placeHolderText: String) -> TextField {
+        let field = TextField(frame: CGRect(x: 0, y: 0, width: view.width, height: 40))
+        field.dividerNormalColor = Color.grey.lighten2.withAlphaComponent(0.4)
+        field.placeholderNormalColor = Color.white.withAlphaComponent(0.7)
+        field.textColor = .white
+        field.placeholder = placeHolderText
+        field.delegate = self
+        field.translatesAutoresizingMaskIntoConstraints = false
+        return field
     }
     
-    func prepareSaveButton() {
+    fileprivate func prepareSaveButton() {
         saveButton.setTitle("Save", for: .normal)
-        saveButton.titleColor = Color.yellow.base
+        saveButton.setTitleColor(Color.grey.base, for: .disabled)
+        saveButton.setTitleColor(Color.yellow.base, for: .normal)
+        self.saveButton.isEnabled = false
         saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         view.layout(saveButton).bottom(20).right(30)
     }
     
     func saveAction() {
-        let contact = Contact(firstName: firstNameField.text!, lastName: lastNameField.text!, birthDate: birthDate, forceSensitive: forceSensitive, pictureURL: "", picture: pictureData, affiliation: nil, zip: zip, phoneNumber: phoneNumber)
+        let contact = Contact(firstName: firstNameField.text!, lastName: lastNameField.text!, birthDate: birthDate, forceSensitive: forceSensitive, pictureURL: "", picture: pictureData, zip: zipField.text, phoneNumber: formatPhoneNumber(phoneNumber: phoneField.text))
         
         try? PersistedData.shared?.add(contact: contact)
 
@@ -254,7 +264,8 @@ extension AddContactViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return false
+        dismissKeyboard()
+        return true
     }
     
     func hideKeyboardWhenTappedAround() {

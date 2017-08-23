@@ -15,10 +15,10 @@ struct Contact {
     let picture:        Data?
     let forceSensitive: Bool
     let affiliation:    String?
-    let phoneNumber:    Int?
-    let zip:            Int?
+    let phoneNumber:    String?
+    let zip:            String?
     
-    init(firstName: String, lastName: String, birthDate: String?, forceSensitive: Bool = false, pictureURL: String, picture: Data? = nil, affiliation: String?, zip: Int?, phoneNumber: Int?) {
+    init(firstName: String, lastName: String, birthDate: String?, forceSensitive: Bool = false, pictureURL: String, picture: Data? = nil, affiliation: String? = nil, zip: String?, phoneNumber: String?) {
         self.firstName      = firstName
         self.lastName       = lastName
         self.birthDate      = birthDate

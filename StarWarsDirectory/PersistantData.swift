@@ -25,8 +25,8 @@ struct PersistedData {
     private let picture         = Expression<Data?>("picture")
     private let affiliation     = Expression<String?>("affiliation")
     private let forceSensitive  = Expression<Bool?>("forceSensitive")
-    private let phoneNumber     = Expression<Int?>("phoneNumber")
-    private let zip             = Expression<Int?>("zip")
+    private let phoneNumber     = Expression<String?>("phoneNumber")
+    private let zip             = Expression<String?>("zip")
 
     init?() {
         guard let dbPath = PersistedData.dbPath() else {
@@ -79,8 +79,8 @@ struct PersistedData {
                 let pictureURL     = ContactJSON["profilePicture"] as? String
                 let picture        = ContactJSON["picture"] as? Data
                 let affiliation    = ContactJSON["affiliation"] as? String
-                let zip            = ContactJSON["zip"] as? Int
-                let phoneNumber    = ContactJSON["PhoneNumber"] as? Int
+                let zip            = ContactJSON["zip"] as? String
+                let phoneNumber    = ContactJSON["PhoneNumber"] as? String
                 
                 
             try self.connection.run(self.contacts.insert(or: OnConflict.replace, self.firstName <- firstName, self.lastName <- lastName, self.birthDate <- birthDate, self.affiliation <- affiliation, self.pictureURL <- pictureURL, self.picture <- picture, self.forceSensitive <- forceSensitive, self.zip <- zip, self.phoneNumber <- phoneNumber))

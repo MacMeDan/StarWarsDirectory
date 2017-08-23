@@ -11,7 +11,7 @@ import StarWars
 
 class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let reuseIdentifier = "cell"
-    var Contacts = [Contact]()
+    var contacts = [Contact]()
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -67,16 +67,16 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
     
     func loadData() {
         DispatchQueue.main.async {
-            self.reloadDataWith(Contacts: PersistedData.shared?.allContacts())
+            self.reloadDataWith(contacts: PersistedData.shared?.allContacts())
         }
     }
 
-    func reloadDataWith(Contacts: [Contact]?) {
-        guard let Contacts = Contacts else {
-            self.Contacts = []
+    func reloadDataWith(contacts: [Contact]?) {
+        guard let contacts = contacts else {
+            self.contacts = []
             return
         }
-        self.Contacts = Contacts
+        self.contacts = contacts.sorted(by: { $0.firstName < $1.firstName })
         tableView.reloadData()
     }
     
@@ -87,7 +87,7 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Contacts.count
+        return contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,7 +95,7 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
             return UITableViewCell()
         }
         cell.backgroundColor = .clear
-        let contact = Contacts[indexPath.item]
+        let contact = contacts[indexPath.item]
         cell.mainLabel.text = contact.firstName + " " + contact.lastName
         cell.subLabel.text = contact.affiliation
         if let pictureData = contact.picture {
@@ -115,8 +115,8 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let Contact = Contacts[indexPath.item]
-        performSegue(withIdentifier: "showProfileView", sender: Contact)
+        let contact = contacts[indexPath.item]
+        performSegue(withIdentifier: "showProfileView", sender: contact)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

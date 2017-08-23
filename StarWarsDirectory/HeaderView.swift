@@ -51,6 +51,9 @@ class HeaderView: UIView {
         self.backgroundColor = UIColor.black
         containerView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(containerView)
+        
+        // Demonstrating Visual Format Language
+        
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[containerView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["containerView" : containerView]))
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[containerView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["containerView" : containerView]))
         containerLayoutConstraint = NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1.0, constant: 0.0)
