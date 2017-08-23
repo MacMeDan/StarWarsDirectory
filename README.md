@@ -8,8 +8,8 @@ Demonstrates:
 - Some sweet transitions
 - Radial button effects
 
-
-<br>
 ## Sneak peek
+<br>
+
 <img src="https://github.com/MacMeDan/StarWarsDirectory/blob/master/Media/StarWarsDirectory.gif" width=40%>
 <br>
