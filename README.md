@@ -5,6 +5,6 @@ It also incorperates a few visual effects, enjoy.
 <br>
 
 ## Sneek peek
-<img src="https://github.com/MacMeDan/StarWarsDirectory/tree/master/Media/StarWarsDirectory.gif" width=40%>
+<img src="https://github.com/MacMeDan/StarWarsDirectory/blob/master/Media/StarWarsDirectory.gif" width=40%>
 
 <br>
