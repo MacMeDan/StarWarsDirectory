@@ -60,7 +60,7 @@ private extension AddContactView {
         prepareFields()
         prepareForceField()
         prepareBirthdayButton()
-        prepareImageSelector()
+//        prepareImageSelector()
         prepareSaveButton()
         prepareBirthdayOverlay()
         starsOverlay = StarsOverlay(frame: mainView.frame)
@@ -119,8 +119,8 @@ private extension AddContactView {
     func prepareImageSelector() {
         contactImage = FABButton()
         contactImage.setTitle("Add Image", for: .normal)
-        contactImage.titleColor = .white
-        contactImage.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+        contactImage.titleColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        contactImage.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.2)
         mainView.layout(contactImage).centerHorizontally().top(50).width(100).height(100)
         contactImage.clipsToBounds = true
         contactImage.cornerRadius = contactImage.frame.height/2
@@ -129,7 +129,7 @@ private extension AddContactView {
     func getStyledTextField(placeHolderText: String) -> TextField {
         let field = TextField(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 40))
         field.dividerNormalColor = Color.grey.lighten2.withAlphaComponent(0.4)
-        field.placeholderNormalColor = Color.white.withAlphaComponent(0.7)
+        field.placeholderNormalColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.7)
         field.textColor = .white
         field.placeholder = placeHolderText
         field.delegate = self
@@ -139,8 +139,8 @@ private extension AddContactView {
     
     func prepareSaveButton() {
         saveButton.setTitle("Save", for: .normal)
-        saveButton.setTitleColor(Color.grey.base, for: .disabled)
-        saveButton.setTitleColor(Color.yellow.base, for: .normal)
+        saveButton.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .disabled)
+        saveButton.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
         self.saveButton.isEnabled = false
         mainView.layout(saveButton).bottom(20).right(30)
     }
@@ -194,7 +194,6 @@ extension AddContactView: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dismissKeyboard()
         return true
     }
     
