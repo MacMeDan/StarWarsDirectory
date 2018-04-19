@@ -83,11 +83,13 @@ class AddContactViewController: UIViewController {
     
     fileprivate func prepareFirstNameField() {
         firstNameField = getStyledTextField(placeHolderText: "First Name")
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: firstNameField, queue: OperationQueue.main) { (Notification) in
-            guard let text = self.firstNameField.text else { return }
-            if text.characters.count > 0 {
-                self.saveButton.isEnabled = true
-            }
+        NotificationCenter.default
+            .addObserver(forName: NSNotification.Name.UITextFieldTextDidChange,
+                         object: firstNameField,
+                         queue: OperationQueue.main) { (Notification) in
+                            
+                            guard let text = self.firstNameField.text else { return }
+                            self.saveButton.isEnabled = text.count > 0
         }
     }
 
@@ -95,7 +97,9 @@ class AddContactViewController: UIViewController {
         zipField = getStyledTextField(placeHolderText: "Zip")
         zipField.keyboardType = .namePhonePad
         // Give visual feedback on weither or not the input is valid
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: zipField, queue: OperationQueue.main) { (Notification) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange,
+                                               object: zipField,
+                                               queue: OperationQueue.main) { (Notification) in
             guard let text = self.zipField.text else { return }
             self.zipField.dividerActiveColor = text.rangeOfCharacter(from: CharacterSet.letters) == nil ? Color.blue.base : Color.red.base
         }
@@ -105,7 +109,10 @@ class AddContactViewController: UIViewController {
         phoneField = getStyledTextField(placeHolderText: "Phone Number")
         phoneField.keyboardType = .namePhonePad
         // Give visual feedback on weither or not the input is valid
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: phoneField, queue: OperationQueue.main) { (Notification) in
+        NotificationCenter
+            .default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange,
+                                 object: phoneField,
+                                 queue: OperationQueue.main) { (Notification) in
             guard let text = self.phoneField.text else { return }
             self.phoneField.dividerActiveColor = text.rangeOfCharacter(from: CharacterSet.letters) == nil ? Color.blue.base : Color.red.base
             self.phoneField.placeholderActiveColor = text.rangeOfCharacter(from: CharacterSet.letters) == nil ? Color.blue.base : Color.red.base
