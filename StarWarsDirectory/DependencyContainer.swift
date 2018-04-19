@@ -15,7 +15,7 @@ class DependencyContainer {
     // MARK: Providers
     static var infoDictionary = Bundle.main.infoDictionary!
     
-    lazy var versionProvider: VersionProviderProtocol = VersionProvider(info: infoDictionary)
+    lazy var versionProvider: VersionProviderProtocol = VersionProvider(info: DependencyContainer.infoDictionary)
 
     // MARK: Services
     

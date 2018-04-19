@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bnn-Ye-IvX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bnn-Ye-IvX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -36,7 +36,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEk-7l-IU4" customClass="ProfileButton" customModule="StarWarsDirectory" customModuleProvider="target">
-                                        <rect key="frame" x="97.5" y="400.5" width="180" height="54"/>
+                                        <rect key="frame" x="122.5" y="400.5" width="130" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="Pgm-f0-JzG"/>
                                         </constraints>
@@ -146,7 +146,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hvr-xE-E9g" firstAttribute="top" secondItem="ncT-KC-r6C" secondAttribute="bottom" id="9oT-HZ-mnt"/>
+                            <constraint firstAttribute="bottom" secondItem="ncT-KC-r6C" secondAttribute="bottom" id="9oT-HZ-mnt"/>
                             <constraint firstAttribute="trailing" secondItem="ncT-KC-r6C" secondAttribute="trailing" id="g6r-Pl-7hG"/>
                             <constraint firstItem="ncT-KC-r6C" firstAttribute="top" secondItem="eVV-5G-zP1" secondAttribute="top" id="gXS-ST-s0b"/>
                             <constraint firstItem="ncT-KC-r6C" firstAttribute="leading" secondItem="eVV-5G-zP1" secondAttribute="leading" id="v1m-ph-B08"/>
@@ -196,7 +196,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TL9-fC-iNR" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SdM-Dm-E74">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -212,7 +212,7 @@
             <objects>
                 <navigationController id="3iW-hG-QUj" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gf4-9B-Fu2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

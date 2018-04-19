@@ -9,16 +9,20 @@
 import UIKit
 import StarWars
 
-class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let reuseIdentifier = "cell"
-    var contacts = [Contact]()
+class DirectoryTableViewController: UIViewController {
+    
+    var contacts = [Contact]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        prepareTable()
+        
         perpareNavigationBar()
         perpareTable()
         NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name(rawValue: "PersistContactsDidFinishNotification"), object: nil)
@@ -26,25 +30,23 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         loadData()
     }
     
+    func prepareTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
     private func perpareTable() {
-        tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier)
         tableView.removeLines()
         tableView.separatorColor = #colorLiteral(red: 0.1215686275, green: 0.1137254902, blue: 0.1333333333, alpha: 1)
     }
     
     private func perpareNavigationBar() {
-        navigationController!.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController!.navigationBar.shadowImage = UIImage()
-        navigationController!.navigationBar.isTranslucent = true
-        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContact))
         addButton.tintColor = UIColor.white
         let item: UINavigationItem = UINavigationItem(title: "Contact list")
             item.rightBarButtonItem = addButton
         navigationController!.navigationBar.setItems([item], animated: false)
-        navigationController!.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.white
-        ]
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,37 +63,48 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     
-    internal func addContact() {
+   
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? UINavigationController, let charicter = sender as? Contact, let settings = destination.topViewController as? ProfileViewController {
+            destination.transitioningDelegate = self
+                settings.contact = charicter
+        }
+    }
+    
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
+}
+
+private extension  DirectoryTableViewController {
+   @objc func addContact() {
         navigationController?.pushViewController(AddContactViewController(), animated: true)
     }
     
-    internal func loadData() {
+    @objc func loadData() {
         DispatchQueue.main.async {
             self.reloadDataWith(contacts: PersistedData.shared?.allContacts())
         }
     }
-
-    fileprivate func reloadDataWith(contacts: [Contact]?) {
+    
+    func reloadDataWith(contacts: [Contact]?) {
         guard let contacts = contacts else {
             self.contacts = []
             return
         }
         self.contacts = contacts.sorted(by: { $0.firstName < $1.firstName })
-        tableView.reloadData()
     }
+}
+
+extension DirectoryTableViewController: UITableViewDataSource, UITableViewDelegate {
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    // MARK: - Table view data source
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? ContactTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.reuseIdentifier) as? ContactTableViewCell else {
             return UITableViewCell()
         }
         cell.backgroundColor = .clear
@@ -118,26 +131,15 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         let contact = contacts[indexPath.item]
         performSegue(withIdentifier: "showProfileView", sender: contact)
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? UINavigationController, let charicter = sender as? Contact, let settings = destination.topViewController as? ProfileViewController {
-            destination.transitioningDelegate = self
-                settings.contact = charicter
-        }
-    }
-    
-    override var prefersStatusBarHidden : Bool {
-        return true
-    }
 }
 
 // MARK: Dizolve Animation
-
-extension DirectoryTableViewController {
+extension DirectoryTableViewController: UIViewControllerTransitioningDelegate {
     
-    override func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return StarWarsGLAnimator()
     }
+
     
 }
 

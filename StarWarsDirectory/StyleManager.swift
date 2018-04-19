@@ -43,17 +43,21 @@ class StyleManager: StyleManagerProtocol {
 //            proxy.textLabel?.font = Font.appFont(ofSize: 12, style: .book)
 //            proxy.textLabel?.textColor = Color.SearchBar.placeholder
 //        }
-//
-//        // Navigation bars
-//        do {
-//            let proxy = UINavigationBar.appearance()
-//            proxy.barTintColor = Color.primary
-//            proxy.tintColor = Color.white
-//            proxy.titleTextAttributes = [
-//                NSAttributedStringKey.font: Font.appFont(ofSize: 17, style: .bold),
-//                NSAttributedStringKey.foregroundColor: Color.white
-//            ]
-//        }
+
+        
+        // Navigation bars
+        do {
+            let proxy = UINavigationBar.appearance()
+            
+            proxy.barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            proxy.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            proxy.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            proxy.shadowImage = UIImage()
+            proxy.isTranslucent = true
+            proxy.titleTextAttributes = [
+                NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            ]
+        }
 //
 //        // Text fields
 //        do {

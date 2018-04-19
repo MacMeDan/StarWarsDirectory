@@ -11,288 +11,117 @@ import Material
 import AVFoundation
 
 class AddContactViewController: UIViewController {
-    var scrollView  =   UIScrollView()
-    var contentView =   UIStackView()
-    var activeField:    UITextField?
-    var firstNameField: TextField!
-    var lastNameField:  TextField!
-    var zipField:       TextField!
-    var phoneField:     TextField!
-    var forceField:     View!
-    var birthdayButton: FlatButton!
-    var overlay:        View!
-    let datePicker =    UIDatePicker()
-    
-    let forceSwitch =   Switch()
-    var forceSensitive: Bool = false
-    var birthDate:      String?
-    var pictureData:    Data?
-    var affiliation:    String?
-    var contactImage:   FABButton!
-    let saveButton:     FlatButton = FlatButton()
+    var contentView: AddContactView = AddContactView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.frame = view.frame
-        view = scrollView
+        hideKeyboardWhenTappedAround()
         prepareNavigation()
-        prepareFields()
-        prepareForceField()
-        prepareBirthdayButton()
-        prepareView()
-        prepareImageSelector()
-        prepareSaveButton()
-        prepareBirthdayOverlay()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
     
-    fileprivate func prepareView() {
-        view = StarsOverlay(frame: view.frame)
-        hideKeyboardWhenTappedAround()
-        contentView = UIStackView(arrangedSubviews: [firstNameField, lastNameField, zipField, phoneField, birthdayButton, forceField])
-        contentView.axis = .vertical
-        contentView.spacing = 25
-        contentView.distribution = .fill
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        view.layout(contentView).top(180).left(30).right(20)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
-        //Keeps the stars form colliding
+        // Keeps the stars form colliding
         UIView.animate(withDuration: 0.5, animations: {
             self.view.alpha = 0.0
         })
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //Ensures view is visiable when imagePicker is dismissed
+        // Ensures view is visiable when imagePicker is dismissed
         self.view.alpha = 1.0
     }
     
-    fileprivate func prepareNavigation() {
+    override func loadView() {
+        super.loadView()
+        view = contentView
+    }
+    
+    private func prepareNavigation() {
         navigationController?.navigationBar.tintColor = .white
-    }
-    
-    fileprivate func prepareFields() {
-        prepareFirstNameField()
-        lastNameField = getStyledTextField(placeHolderText: "Last Name")
-        prepareZipField()
-        preparePhoneField()
-    }
-    
-    fileprivate func prepareFirstNameField() {
-        firstNameField = getStyledTextField(placeHolderText: "First Name")
-        NotificationCenter.default
-            .addObserver(forName: NSNotification.Name.UITextFieldTextDidChange,
-                         object: firstNameField,
-                         queue: OperationQueue.main) { (Notification) in
-                            
-                            guard let text = self.firstNameField.text else { return }
-                            self.saveButton.isEnabled = text.count > 0
-        }
-    }
-
-    fileprivate func prepareZipField() {
-        zipField = getStyledTextField(placeHolderText: "Zip")
-        zipField.keyboardType = .namePhonePad
-        // Give visual feedback on weither or not the input is valid
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange,
-                                               object: zipField,
-                                               queue: OperationQueue.main) { (Notification) in
-            guard let text = self.zipField.text else { return }
-            self.zipField.dividerActiveColor = text.rangeOfCharacter(from: CharacterSet.letters) == nil ? Color.blue.base : Color.red.base
-        }
-    }
-    
-    fileprivate func preparePhoneField() {
-        phoneField = getStyledTextField(placeHolderText: "Phone Number")
-        phoneField.keyboardType = .namePhonePad
-        // Give visual feedback on weither or not the input is valid
-        NotificationCenter
-            .default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange,
-                                 object: phoneField,
-                                 queue: OperationQueue.main) { (Notification) in
-            guard let text = self.phoneField.text else { return }
-            self.phoneField.dividerActiveColor = text.rangeOfCharacter(from: CharacterSet.letters) == nil ? Color.blue.base : Color.red.base
-            self.phoneField.placeholderActiveColor = text.rangeOfCharacter(from: CharacterSet.letters) == nil ? Color.blue.base : Color.red.base
-        }
-    }
-    
-    fileprivate func formatPhoneNumber(phoneNumber: String?) -> String? {
-        if let number = phoneNumber {
-            if number.characters.count > 10 || number.characters.count < 6 {
-                return number
-            }
-            
-            let areaCode = number.substring(with: number.startIndex..<number.index(number.startIndex, offsetBy: 3))
-            let firstThree = number.substring(with: number.index(number.startIndex, offsetBy: 4)..<number.index(number.startIndex, offsetBy: 6))
-            let lastFour = number.substring(with: number.index(number.startIndex, offsetBy: 6)..<number.endIndex)
-            
-            return "(\(areaCode)) \(firstThree)-\(lastFour)"
-        }
-        return phoneNumber
-    }
-    
-    fileprivate func prepareForceField() {
-        forceField = View(frame: CGRect(x: 0, y: 0, width: view.width, height: 40))
-        forceField.backgroundColor = UIColor.clear
-        forceSwitch.buttonOnColor = Color.yellow.base
-        forceSwitch.trackOnColor = Color.yellow.lighten4
-        forceField.layout(forceSwitch).centerVertically().right(10)
-        let label = UILabel(frame: .zero)
-        label.text = "Force Sensitive"
-        label.textColor = UIColor.white.withAlphaComponent(0.7)
-        forceField.layout(label).centerVertically().left(10).right(50)
-        forceSwitch.addTarget(self, action: #selector(forceSwitchAction), for: .valueChanged)
-    }
-    
-    func forceSwitchAction() {
-        forceSensitive = forceSwitch.isOn
-    }
-    
-    fileprivate func prepareBirthdayButton() {
-        birthdayButton = FlatButton(title: "Add Birthday", titleColor: UIColor.white.withAlphaComponent(0.7))
-        birthdayButton.backgroundColor = .clear
-        birthdayButton.addTarget(self, action: #selector(addBirthdayAction), for: .touchUpInside)
-    }
-    
-    func addBirthdayAction() {
-        dismissKeyboard()
-        overlay.isHidden = !overlay.isHidden
-    }
-    
-    fileprivate func prepareBirthdayOverlay() {
-        overlay = View(frame: view.frame)
-        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.9)
-        overlay.layout(datePicker).center().left(20).right(20)
-        datePicker.datePickerMode = .date
-        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
-        datePicker.setDate(Date(timeIntervalSinceNow: -30000), animated: false)
-        datePicker.tintColor = .white
-        datePicker.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        let saveBirthdayButton = FlatButton(title: "Save Birthday")
-        saveBirthdayButton.addTarget(self, action: #selector(saveBirthdayAction), for: .touchUpInside)
-        overlay.layout(saveBirthdayButton).right(20).centerVertically(offset: datePicker.height/2)
-        saveBirthdayButton.setTitleColor(.white, for: .normal)
-        view.layout(overlay).top().bottom().left().right()
-        overlay.isHidden = true
-    }
-    
-    func saveBirthdayAction() {
-        let dateFormater = DateFormatter()
-        dateFormater.dateStyle = .short
-        birthDate = dateFormater.string(from: datePicker.date)
-        birthdayButton.setTitle("Birthdate :  \(dateFormater.string(from: datePicker.date))", for: .normal)
-        overlay.isHidden = true
-    }
-    
-    fileprivate func prepareImageSelector() {
-        contactImage = FABButton()
-        contactImage.setTitle("Add Image", for: .normal)
-        contactImage.titleColor = .white
-        contactImage.backgroundColor = UIColor.white.withAlphaComponent(0.2)
-        contactImage.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
-        view.layout(contactImage).centerHorizontally().top(50).width(100).height(100)
-        contactImage.clipsToBounds = true
-        contactImage.cornerRadius = contactImage.height/2
-    }
-    
-    fileprivate func getStyledTextField(placeHolderText: String) -> TextField {
-        let field = TextField(frame: CGRect(x: 0, y: 0, width: view.width, height: 40))
-        field.dividerNormalColor = Color.grey.lighten2.withAlphaComponent(0.4)
-        field.placeholderNormalColor = Color.white.withAlphaComponent(0.7)
-        field.textColor = .white
-        field.placeholder = placeHolderText
-        field.delegate = self
-        field.translatesAutoresizingMaskIntoConstraints = false
-        return field
-    }
-    
-    fileprivate func prepareSaveButton() {
-        saveButton.setTitle("Save", for: .normal)
-        saveButton.setTitleColor(Color.grey.base, for: .disabled)
-        saveButton.setTitleColor(Color.yellow.base, for: .normal)
-        self.saveButton.isEnabled = false
-        saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
-        view.layout(saveButton).bottom(20).right(30)
-    }
-    
-    func saveAction() {
-        let phoneNumber = phoneField.text == "" ? nil : formatPhoneNumber(phoneNumber:phoneField.text)
-        let zip = zipField.text == "" ? nil : zipField.text
-        let contact = Contact(firstName: firstNameField.text!, lastName: lastNameField.text!, birthDate: birthDate, forceSensitive: forceSensitive, pictureURL: "", picture: pictureData, zip: zip, phoneNumber: phoneNumber)
-        
-        try? PersistedData.shared?.add(contact: contact)
-
-        navigationController?.popViewController(animated: true)
-        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "newEntry")))
     }
     
     override var prefersStatusBarHidden : Bool {
         return true
     }
+    
+    @objc func addBirthdayAction() {
+        contentView.dismissKeyboard()
+        contentView.overlay.isHidden = !contentView.overlay.isHidden
+    }
+    
+    func bindView() {
+        contentView.saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
+        contentView.birthdayButton.addTarget(self, action: #selector(addBirthdayAction), for: .touchUpInside)
+        contentView.contactImage.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
+        contentView.saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
+        contentView.birthdayButton.addTarget(self, action: #selector(saveBirthdayAction), for: .touchUpInside)
+        
+    }
  
     // MARK: - Keyboard offset methods
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
             let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
             
-            self.scrollView.contentInset = contentInsets
-            self.scrollView.scrollIndicatorInsets = contentInsets
+            contentView.scrollView.contentInset = contentInsets
+            contentView.scrollView.scrollIndicatorInsets = contentInsets
             
             var aRect : CGRect = self.view.frame
             aRect.size.height -= keyboardSize.height
-            if let activeField = self.activeField {
+            if let activeField = contentView.activeField {
                 if (!aRect.contains(activeField.frame.origin)){
-                    self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
+                    contentView.scrollView.scrollRectToVisible(activeField.frame, animated: true)
                 }
             }
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func saveAction() {
+        let phoneNumber = contentView.phoneField.text == "" ? nil : formatPhoneNumber(phoneNumber: contentView.phoneField.text)
+        let zip = contentView.zipField.text == "" ? nil : contentView.zipField.text
+        let contact = Contact(firstName: contentView.firstNameField.text!,
+                              lastName: contentView.lastNameField.text!,
+                              birthDate: contentView.birthDate,
+                              forceSensitive: contentView.forceSensitive,
+                              pictureURL: "",
+                              picture: contentView.pictureData,
+                              zip: zip,
+                              phoneNumber: phoneNumber)
+        
+        try? PersistedData.shared?.add(contact: contact)
+        
+        navigationController?.popViewController(animated: true)
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "newEntry")))
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize.height, 0.0)
-            self.scrollView.contentInset = contentInsets
-            self.scrollView.scrollIndicatorInsets = contentInsets
-            self.view.endEditing(true)
-            self.scrollView.isScrollEnabled = false
+            contentView.scrollView.contentInset = contentInsets
+            contentView.scrollView.scrollIndicatorInsets = contentInsets
+            view.endEditing(true)
+            contentView.scrollView.isScrollEnabled = false
         }
-    }
-}
-
-extension AddContactViewController: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeField = textField
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        activeField = nil
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dismissKeyboard()
-        return true
     }
     
     func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(contentView.dismissKeyboard))
+        contentView.addGestureRecognizer(tap)
     }
     
-    func dismissKeyboard() {
-        view.endEditing(true)
-    }
+    
 }
+
+
 
 // MARK: - ImagePickerControllerDelegate
 
-extension AddContactViewController: UIImagePickerControllerDelegate {
+extension AddContactViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func pickPhoto() {
+    @objc func pickPhoto() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             showPhotoMenu()
         } else {
@@ -317,6 +146,21 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         present(alertController, animated: true, completion: nil)
     }
     
+    func formatPhoneNumber(phoneNumber: String?) -> String? {
+        if let number = phoneNumber {
+            if number.count > 10 || number.count < 6 {
+                return number
+            }
+            
+            let areaCode = number[number.startIndex...number.index(number.startIndex, offsetBy: 4)]
+            let firstThree = number[number.index(number.startIndex, offsetBy: 4)...number.index(number.startIndex, offsetBy: 6)]
+            let lastFour = number[number.index(number.startIndex, offsetBy: 6)...]
+            
+            return "(\(areaCode)) \(firstThree)-\(lastFour)"
+        }
+        return phoneNumber
+    }
+    
     func takePhotoWithCamera() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .camera
@@ -325,7 +169,7 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    internal func choosePhotoFromLibrary() {
+    func choosePhotoFromLibrary() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
@@ -333,10 +177,18 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    @objc func saveBirthdayAction() {
+        let dateFormater = DateFormatter()
+        dateFormater.dateStyle = .short
+        contentView.birthDate = dateFormater.string(from: contentView.datePicker.date)
+        contentView.birthdayButton.setTitle("Birthdate :  \(dateFormater.string(from: contentView.datePicker.date))", for: .normal)
+        contentView.overlay.isHidden = true
+    }
+    
     internal func newImgTapped(sender: FABButton) {
         let imgPicker = UIImagePickerController()
         imgPicker.delegate = self
-        let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
         if status == AVAuthorizationStatus.denied {
             
             let changeYourSettingsAlert = UIAlertController(title: "You do not have permissions enabled for this.", message: "Would you like to change them in settings?", preferredStyle: .alert)
@@ -387,8 +239,8 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.contactImage.setImage(image, for: .normal)
-            self.pictureData = UIImagePNGRepresentation(image)
+            contentView.contactImage.setImage(image, for: .normal)
+            contentView.pictureData = UIImagePNGRepresentation(image)
         } else{
             assertionFailure("Error with imagePicker")
         }
@@ -403,4 +255,3 @@ extension AddContactViewController: UIImagePickerControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
 }
-

@@ -16,7 +16,7 @@ class EndpointProvider {
             return URL(string: "")!
         }
         return baseURL
-            .appendingPathComponent("moblile")
+            .appendingPathComponent("mobile")
             .appendingPathComponent("interview")
     }
     

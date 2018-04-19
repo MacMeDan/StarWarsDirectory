@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  ProfileViewController.swift
 //  StarWarsDirectory
 //
 //  Created by P D Leonard on 3/9/17.
@@ -35,7 +35,7 @@ class ProfileViewController: UITableViewController {
         navigationItem.leftBarButtonItem?.tintColor = .white
     }
 
-    func dissmissView() {
+    @objc func dissmissView() {
         self.dismiss(animated: true, completion: nil)
     }
     
