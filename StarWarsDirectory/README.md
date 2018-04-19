@@ -1,11 +1,24 @@
-![Preview](preview.gif)
+# StarWarsDirectory
 
-Check this <a href="https://dribbble.com/shots/2109991-Star-Wars-App-concept">project on dribbble</a>.
+A example application that has been themed with `Star Wars`
 
-Also, read how it was done in [our blog](https://yalantis.com/blog/uidynamics-uikit-or-opengl-3-types-of-ios-animations-for-the-star-wars/)
+This README has links attached to the KeyFeatures that will take you to the file the code it located.
 
-## Requirements
+### Key Features:
+- Dependency Injection
+- Protocol Composition
+- REST endpoint consumption
+- Saving data localy to a [`SQL` database](x-source-tag://SQLDatabase)
+- Radial button effects
+- Some sweet transitions
+- [Color Literals](x-source-tag://ColorLiterals)
+- [@IBInspectable](x-source-tag://IBInspectable)
 
-- iOS 8.0+
-- Xcode 8
-- Swift 3
+
+## Sneak peek
+
+<br>
+
+<img src="https://github.com/MacMeDan/StarWarsDirectory/blob/master/Media/StarWarsDirectory.gif" width=50%>
+
+<br>
