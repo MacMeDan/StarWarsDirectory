@@ -19,8 +19,6 @@
 		37055E01208845F70066C9CF /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E00208845F70066C9CF /* UITableViewCell.swift */; };
 		37055E03208846150066C9CF /* UITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E02208846150066C9CF /* UITableViewHeaderFooterView.swift */; };
 		37055E0620884B380066C9CF /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E0520884B380066C9CF /* ContactService.swift */; };
-		37055E0820884B8C0066C9CF /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E0720884B8C0066C9CF /* BaseService.swift */; };
-		37055E0A20884D000066C9CF /* JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E0920884D000066C9CF /* JSONEncoder.swift */; };
 		374393491E735A5200F34C8C /* StarsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374393481E735A5200F34C8C /* StarsOverlay.swift */; };
 		3743934B1E73722C00F34C8C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3743934A1E73722C00F34C8C /* HeaderView.swift */; };
 		375227261E766095005F7D60 /* CircularRevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375227251E766095005F7D60 /* CircularRevealAnimator.swift */; };
@@ -55,8 +53,6 @@
 		37055E00208845F70066C9CF /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		37055E02208846150066C9CF /* UITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		37055E0520884B380066C9CF /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
-		37055E0720884B8C0066C9CF /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
-		37055E0920884D000066C9CF /* JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
 		374393481E735A5200F34C8C /* StarsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsOverlay.swift; sourceTree = "<group>"; };
 		3743934A1E73722C00F34C8C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		375227251E766095005F7D60 /* CircularRevealAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularRevealAnimator.swift; sourceTree = "<group>"; };
@@ -124,9 +120,16 @@
 			isa = PBXGroup;
 			children = (
 				37055E0520884B380066C9CF /* ContactService.swift */,
-				37055E0720884B8C0066C9CF /* BaseService.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		37055E0B20885B930066C9CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				375E5B291E70B379000273D3 /* Contact.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		375E5B091E70AFCE000273D3 = {
@@ -154,6 +157,7 @@
 				37055DFA208834100066C9CF /* README.md */,
 				37055E0420884B150066C9CF /* Services */,
 				37055DEB208829CC0066C9CF /* Sources */,
+				37055E0B20885B930066C9CF /* Models */,
 				375FFBDE1E7213F500473E91 /* Contact */,
 				375FFBDD1E72113F00473E91 /* Animation */,
 				375FFBCB1E720BE000473E91 /* IntroViewController.swift */,
@@ -175,7 +179,6 @@
 			children = (
 				375E5B321E70D4CB000273D3 /* UIImageView.swift */,
 				375FFBD91E7210A000473E91 /* UIColor.swift */,
-				37055E0920884D000066C9CF /* JSONEncoder.swift */,
 				375E5B341E70E779000273D3 /* UITableView.swift */,
 				37055E00208845F70066C9CF /* UITableViewCell.swift */,
 				37055E02208846150066C9CF /* UITableViewHeaderFooterView.swift */,
@@ -198,7 +201,6 @@
 		375FFBDE1E7213F500473E91 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				375E5B291E70B379000273D3 /* Contact.swift */,
 				375E5B2B1E70B81C000273D3 /* ContactTableViewCell.swift */,
 				375E5B361E70F059000273D3 /* PersistantData.swift */,
 			);
@@ -348,8 +350,6 @@
 				375FFBD81E72106400473E91 /* View.swift in Sources */,
 				37055DFD208839F20066C9CF /* Style.swift in Sources */,
 				37055DF120882B2E0066C9CF /* Logs.swift in Sources */,
-				37055E0820884B8C0066C9CF /* BaseService.swift in Sources */,
-				37055E0A20884D000066C9CF /* JSONEncoder.swift in Sources */,
 				37D6876C1F3CDBDF00BC2541 /* AddContactViewController.swift in Sources */,
 				3743934B1E73722C00F34C8C /* HeaderView.swift in Sources */,
 				37055DED208829DC0066C9CF /* DependencyContainer.swift in Sources */,

@@ -39,6 +39,9 @@ class AppCoordinator: NSObject {
         enableLogging()
         self.application = application
         self.dependencyContainer = dependencyContainer
+        //TODO: Move to more appropriate place
+        let contactService = dependencyContainer.makeContactService()
+        contactService.sync()
         configureStyles()
         return true
     }
@@ -54,6 +57,5 @@ private extension AppCoordinator {
         let styleManager = dependencyContainer.makeStyleManager()
         styleManager.configureStyles()
     }
-
     
 }

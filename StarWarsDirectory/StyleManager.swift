@@ -15,6 +15,8 @@ protocol StyleManagerProtocol {
 class StyleManager: StyleManagerProtocol {
     func configureStyles() {
         
+        // TODO: update to user this.
+        
         // Bar buttons
 //        do {
 //            let proxy = UIBarButtonItem.appearance()
