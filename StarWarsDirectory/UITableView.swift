@@ -6,11 +6,12 @@
 //  Copyright © 2017 MacMeDan. All rights reserved.
 //
 
-
 import UIKit
 
 extension UITableView {
+    
     func removeLines() {
         self.tableFooterView = UIView()
     }
+    
 }

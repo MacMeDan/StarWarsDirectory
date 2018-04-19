@@ -8,8 +8,6 @@
 
 import UIKit
 
-import UIKit
-
 class IntroViewController: UIViewController {
     
     @IBOutlet fileprivate var topContraint: NSLayoutConstraint!
