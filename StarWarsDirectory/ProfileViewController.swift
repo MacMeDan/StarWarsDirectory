@@ -52,8 +52,7 @@ class ProfileViewController: UITableViewController {
             self.tableView.tableHeaderView  = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: hight), imageURL: imageURL)
         }
         
-        
-        tableView.separatorColor = UIColor(string: "#1f1d22")
+        tableView.separatorColor = #colorLiteral(red: 0.1215686275, green: 0.1137254902, blue: 0.1333333333, alpha: 1)
         tableView.removeLines()
         tableView.backgroundColor = .black
     }
@@ -61,9 +60,9 @@ class ProfileViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
         let row = rows[indexPath.row]
-        cell.textLabel?.textColor = UIColor(string: "#4f4d51")
+        cell.textLabel?.textColor = #colorLiteral(red: 0.3098039216, green: 0.3019607843, blue: 0.3176470588, alpha: 1)
         cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
-        cell.detailTextLabel?.textColor = UIColor(string: "#d0d0d1")
+        cell.detailTextLabel?.textColor = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8196078431, alpha: 1)
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
         cell.textLabel?.text = row.0
         cell.detailTextLabel?.text = row.1
@@ -97,8 +96,11 @@ class ProfileViewController: UITableViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let headerView = self.tableView.tableHeaderView as! HeaderView
-        headerView.scrollViewDidScroll(scrollView: scrollView)
+        
+        if let headerView = self.tableView.tableHeaderView as? HeaderView {
+            headerView.scrollViewDidScroll(scrollView: scrollView)
+        }
+        
     }
 
     override var prefersStatusBarHidden : Bool {

@@ -10,7 +10,7 @@ import Foundation
 import SQLite
 
 struct PersistedData {
-    
+    /// - Tag: SQLDatabase
     static let PersistContactsDidFinishNotification = "PersistContactsDidFinishNotification"
     private static let CurrentVersion = 1
     // If the database is changed the version number needs to be updated and a updateDatabaseFromVersion(Int, toVersion: Int) method needs to be implimented.

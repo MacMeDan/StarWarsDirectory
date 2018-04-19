@@ -26,13 +26,13 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         loadData()
     }
     
-    fileprivate func perpareTable() {
+    private func perpareTable() {
         tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.removeLines()
-        tableView.separatorColor = UIColor(string: "#1f1d22")
+        tableView.separatorColor = #colorLiteral(red: 0.1215686275, green: 0.1137254902, blue: 0.1333333333, alpha: 1)
     }
     
-    fileprivate func perpareNavigationBar() {
+    private func perpareNavigationBar() {
         navigationController!.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController!.navigationBar.shadowImage = UIImage()
         navigationController!.navigationBar.isTranslucent = true
@@ -48,7 +48,7 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        //Keeps the stars form colliding
+        // Keeps the stars form colliding
         UIView.animate(withDuration: 0.5, animations: {
             self.view.alpha = 0.0
         })
@@ -130,8 +130,14 @@ class DirectoryTableViewController: UIViewController, UITableViewDelegate, UITab
         return true
     }
 }
+
 // MARK: Dizolve Animation
+
 extension DirectoryTableViewController {
-    override func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? { return StarWarsGLAnimator() }
+    
+    override func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return StarWarsGLAnimator()
+    }
+    
 }
 

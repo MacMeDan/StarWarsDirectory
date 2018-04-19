@@ -53,6 +53,7 @@ class HeaderView: UIView {
         self.addSubview(containerView)
         
         // Demonstrating Visual Format Language
+        // Though I do not prefer to do layout this way.
         
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[containerView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["containerView" : containerView]))
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[containerView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["containerView" : containerView]))

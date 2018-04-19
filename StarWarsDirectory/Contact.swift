@@ -7,7 +7,7 @@
 //
 import Foundation
 
-struct Contact {
+struct Contact: Codable {
     let firstName:      String
     let lastName:       String
     let birthDate:      String?
@@ -18,7 +18,16 @@ struct Contact {
     let phoneNumber:    String?
     let zip:            String?
     
-    init(firstName: String, lastName: String, birthDate: String?, forceSensitive: Bool = false, pictureURL: String, picture: Data? = nil, affiliation: String? = nil, zip: String? = nil, phoneNumber: String? = nil) {
+    init(firstName: String,
+         lastName: String,
+         birthDate: String?,
+         forceSensitive: Bool = false,
+         pictureURL: String,
+         picture: Data? = nil,
+         affiliation: String? = nil,
+         zip: String? = nil,
+         phoneNumber: String? = nil) {
+        
         self.firstName      = firstName
         self.lastName       = lastName
         self.birthDate      = birthDate
@@ -28,5 +37,6 @@ struct Contact {
         self.zip            = zip
         self.phoneNumber    = phoneNumber
         self.picture        = picture
+        
     }
 }

@@ -54,7 +54,7 @@ class ContactTableViewCell: UITableViewCell {
     
     func prepareMainLabel() {
         mainLabel.font = UIFont.systemFont(ofSize: 18)
-        mainLabel.textColor = UIColor(string: "#d0d0d1")
+        mainLabel.textColor = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8196078431, alpha: 1)
         self.contentView.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { (make) in
             make.left.equalTo(70)
@@ -66,7 +66,7 @@ class ContactTableViewCell: UITableViewCell {
     
     func prepareSubLabel() {
         subLabel.font = UIFont.systemFont(ofSize: 10)
-        subLabel.textColor = UIColor(string: "#4f4d51")
+        subLabel.textColor = #colorLiteral(red: 0.3098039216, green: 0.3019607843, blue: 0.3176470588, alpha: 1)
         subLabel.numberOfLines = 1
         contentView.addSubview(subLabel)
         subLabel.snp.makeConstraints { (make) in

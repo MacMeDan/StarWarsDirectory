@@ -28,11 +28,17 @@ class CircularRevealAnimator {
         set(value) { animation.timingFunction = value }
     }
 
-    init(layer: CALayer, center: CGPoint, startRadius: CGFloat, endRadius: CGFloat, invert: Bool = false) {
+    init(layer: CALayer,
+         center: CGPoint,
+         startRadius: CGFloat,
+         endRadius: CGFloat,
+         invert: Bool = false) {
+        
         let startCirclePath = CGPath(ellipseIn: SquareAroundCircle(center, radius: startRadius), transform: nil)
         let endCirclePath = CGPath(ellipseIn: SquareAroundCircle(center, radius: endRadius), transform: nil)
         
         var startPath = startCirclePath, endPath = endCirclePath
+        
         if invert {
             var path = CGMutablePath()
             path.addRect(layer.bounds)
@@ -53,6 +59,7 @@ class CircularRevealAnimator {
         animation = CABasicAnimation(keyPath: "path")
         animation.fromValue = startPath
         animation.toValue = endPath
+        
         animation.delegate = AnimationDelegate {
             layer.mask = nil
             self.completion?()
