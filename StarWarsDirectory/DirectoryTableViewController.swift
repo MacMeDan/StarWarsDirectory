@@ -62,8 +62,6 @@ class DirectoryTableViewController: UIViewController {
         })
     }
 
-    
-   
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? UINavigationController, let charicter = sender as? Contact, let settings = destination.topViewController as? ProfileViewController {

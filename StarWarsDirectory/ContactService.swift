@@ -24,7 +24,6 @@ class ContactService: ContactServiceProtocol {
         self.factory = factory
     }
     
-    
     func sync() {
         let request = Alamofire.request(EndpointProvider().directory)
         request.validate().responseJSON { response in

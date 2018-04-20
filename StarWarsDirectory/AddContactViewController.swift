@@ -17,6 +17,7 @@ class AddContactViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         prepareNavigation()
+        bindView()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
@@ -47,17 +48,13 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func addBirthdayAction() {
-        contentView.dismissKeyboard()
         contentView.overlay.isHidden = !contentView.overlay.isHidden
     }
     
     func bindView() {
         contentView.saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         contentView.birthdayButton.addTarget(self, action: #selector(addBirthdayAction), for: .touchUpInside)
-        contentView.contactImage.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
-        contentView.saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
-        contentView.birthdayButton.addTarget(self, action: #selector(saveBirthdayAction), for: .touchUpInside)
-        
+        contentView.saveBirthdayButton.addTarget(self, action: #selector(saveBirthdayAction), for: .touchUpInside)
     }
  
     // MARK: - Keyboard offset methods
@@ -87,7 +84,6 @@ class AddContactViewController: UIViewController {
                               birthDate: contentView.birthDate,
                               forceSensitive: contentView.forceSensitive,
                               pictureURL: "",
-                              picture: contentView.pictureData,
                               zip: zip,
                               phoneNumber: phoneNumber)
         
@@ -108,42 +104,20 @@ class AddContactViewController: UIViewController {
     }
     
     func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(contentView.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         contentView.addGestureRecognizer(tap)
     }
     
-    
-}
-
-
-
-// MARK: - ImagePickerControllerDelegate
-
-extension AddContactViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    @objc func pickPhoto() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            showPhotoMenu()
-        } else {
-            choosePhotoFromLibrary()
-        }
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
-    func showPhotoMenu() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let takePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
-            self.takePhotoWithCamera()
-        })
-        let chooseFromLibraryAction = UIAlertAction(title: "Choose From Library", style: .default, handler: { _ in
-            self.choosePhotoFromLibrary()
-        })
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(takePhotoAction)
-        alertController.addAction(chooseFromLibraryAction)
-        present(alertController, animated: true, completion: nil)
+    @objc func saveBirthdayAction() {
+        let dateFormater = DateFormatter()
+        dateFormater.dateStyle = .short
+        contentView.birthDate = dateFormater.string(from: contentView.datePicker.date)
+        contentView.birthdayButton.setTitle("Birthdate :  \(dateFormater.string(from: contentView.datePicker.date))", for: .normal)
+        contentView.overlay.isHidden = true
     }
     
     func formatPhoneNumber(phoneNumber: String?) -> String? {
@@ -159,99 +133,5 @@ extension AddContactViewController: UIImagePickerControllerDelegate, UINavigatio
             return "(\(areaCode)) \(firstThree)-\(lastFour)"
         }
         return phoneNumber
-    }
-    
-    func takePhotoWithCamera() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .camera
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    func choosePhotoFromLibrary() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    @objc func saveBirthdayAction() {
-        let dateFormater = DateFormatter()
-        dateFormater.dateStyle = .short
-        contentView.birthDate = dateFormater.string(from: contentView.datePicker.date)
-        contentView.birthdayButton.setTitle("Birthdate :  \(dateFormater.string(from: contentView.datePicker.date))", for: .normal)
-        contentView.overlay.isHidden = true
-    }
-    
-    internal func newImgTapped(sender: FABButton) {
-        let imgPicker = UIImagePickerController()
-        imgPicker.delegate = self
-        let status = AVCaptureDevice.authorizationStatus(for: .video)
-        if status == AVAuthorizationStatus.denied {
-            
-            let changeYourSettingsAlert = UIAlertController(title: "You do not have permissions enabled for this.", message: "Would you like to change them in settings?", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) -> Void in
-                guard let url = URL(string: UIApplicationOpenSettingsURLString) else {return}
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            })
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
-            changeYourSettingsAlert.addAction(okAction)
-            changeYourSettingsAlert.addAction(cancelAction)
-            presentAlert(sender: changeYourSettingsAlert)
-            
-        } else {
-            let Alert = UIAlertController(title: "Where would you like to get photos from?", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-            Alert.popoverPresentationController?.sourceRect = sender.bounds
-            Alert.popoverPresentationController?.sourceView = sender
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
-            imgPicker.allowsEditing = false
-            imgPicker.modalPresentationStyle = UIModalPresentationStyle.popover
-            imgPicker.popoverPresentationController?.sourceView = sender
-            imgPicker.popoverPresentationController?.sourceRect = sender.bounds
-            
-            presentAlert(sender: Alert)
-            
-            let camera = UIAlertAction(title: "Take a Photo", style: .default) { (camera) -> Void in
-                imgPicker.sourceType = .camera
-                self.present(imgPicker, animated: true, completion: nil)
-            }
-            
-            let photoLibrary = UIAlertAction(title: "Choose from Library", style: .default) { (Photolibrary) -> Void in
-                imgPicker.sourceType = .photoLibrary
-                self.present(imgPicker, animated: true, completion: nil)
-            }
-            
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-                Alert.addAction(camera)
-            }
-            
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
-                Alert.addAction(photoLibrary)
-            }
-            
-            Alert.addAction(cancelAction)
-        }
-    }
-    
-    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            contentView.contactImage.setImage(image, for: .normal)
-            contentView.pictureData = UIImagePNGRepresentation(image)
-        } else{
-            assertionFailure("Error with imagePicker")
-        }
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    internal func presentAlert(sender: UIAlertController) {
-        present(sender, animated: false, completion: nil)
-    }
-    
-    internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
     }
 }

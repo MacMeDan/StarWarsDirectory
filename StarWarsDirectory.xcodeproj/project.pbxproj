@@ -20,6 +20,7 @@
 		37055E03208846150066C9CF /* UITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E02208846150066C9CF /* UITableViewHeaderFooterView.swift */; };
 		37055E0620884B380066C9CF /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E0520884B380066C9CF /* ContactService.swift */; };
 		37055E0E2088764B0066C9CF /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E0D2088764B0066C9CF /* AddContactView.swift */; };
+		37055E11208967DC0066C9CF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E10208967DC0066C9CF /* ProfileViewController.swift */; };
 		374393491E735A5200F34C8C /* StarsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374393481E735A5200F34C8C /* StarsOverlay.swift */; };
 		3743934B1E73722C00F34C8C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3743934A1E73722C00F34C8C /* HeaderView.swift */; };
 		375227261E766095005F7D60 /* CircularRevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375227251E766095005F7D60 /* CircularRevealAnimator.swift */; };
@@ -38,7 +39,6 @@
 		375FFBD81E72106400473E91 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBD71E72106400473E91 /* View.swift */; };
 		375FFBDA1E7210A000473E91 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBD91E7210A000473E91 /* UIColor.swift */; };
 		375FFBDC1E7210FF00473E91 /* AnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBDB1E7210FF00473E91 /* AnimationDelegate.swift */; };
-		375FFBE01E721ED200473E91 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FFBDF1E721ED200473E91 /* ProfileViewController.swift */; };
 		37D6876C1F3CDBDF00BC2541 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D6876B1F3CDBDF00BC2541 /* AddContactViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +55,7 @@
 		37055E02208846150066C9CF /* UITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		37055E0520884B380066C9CF /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		37055E0D2088764B0066C9CF /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
+		37055E10208967DC0066C9CF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		374393481E735A5200F34C8C /* StarsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsOverlay.swift; sourceTree = "<group>"; };
 		3743934A1E73722C00F34C8C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		375227251E766095005F7D60 /* CircularRevealAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularRevealAnimator.swift; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		375FFBD71E72106400473E91 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		375FFBD91E7210A000473E91 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		375FFBDB1E7210FF00473E91 /* AnimationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDelegate.swift; sourceTree = "<group>"; };
-		375FFBDF1E721ED200473E91 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		376184EA1F43AD320030C321 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		37D6876B1F3CDBDF00BC2541 /* AddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		5A0B03BFB75E8F44F741FAB9 /* Pods_StarWarsDirectory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsDirectory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,15 +137,22 @@
 		37055E0C20885D770066C9CF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				375E5B2D1E70B85B000273D3 /* DirectoryTableViewController.swift */,
-				37D6876B1F3CDBDF00BC2541 /* AddContactViewController.swift */,
 				37055E0D2088764B0066C9CF /* AddContactView.swift */,
 				3743934A1E73722C00F34C8C /* HeaderView.swift */,
 				375FFBCB1E720BE000473E91 /* IntroViewController.swift */,
 				375E5B2B1E70B81C000273D3 /* ContactTableViewCell.swift */,
-				375FFBDF1E721ED200473E91 /* ProfileViewController.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		37055E0F20895DDF0066C9CF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				37D6876B1F3CDBDF00BC2541 /* AddContactViewController.swift */,
+				375E5B2D1E70B85B000273D3 /* DirectoryTableViewController.swift */,
+				37055E10208967DC0066C9CF /* ProfileViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		375E5B091E70AFCE000273D3 = {
@@ -174,6 +181,7 @@
 				37055E0420884B150066C9CF /* Services */,
 				37055DEB208829CC0066C9CF /* Sources */,
 				37055E0B20885B930066C9CF /* Models */,
+				37055E0F20895DDF0066C9CF /* Controllers */,
 				37055E0C20885D770066C9CF /* Views */,
 				375FFBDE1E7213F500473E91 /* Storage */,
 				375FFBDD1E72113F00473E91 /* Animation */,
@@ -368,12 +376,12 @@
 				3743934B1E73722C00F34C8C /* HeaderView.swift in Sources */,
 				37055DED208829DC0066C9CF /* DependencyContainer.swift in Sources */,
 				37055E03208846150066C9CF /* UITableViewHeaderFooterView.swift in Sources */,
-				375FFBE01E721ED200473E91 /* ProfileViewController.swift in Sources */,
 				375FFBCE1E720EE900473E91 /* ProfileButton.swift in Sources */,
 				375E5B331E70D4CB000273D3 /* UIImageView.swift in Sources */,
 				375E5B371E70F059000273D3 /* PersistantData.swift in Sources */,
 				375E5B161E70AFCE000273D3 /* AppDelegate.swift in Sources */,
 				375FFBCC1E720BE000473E91 /* IntroViewController.swift in Sources */,
+				37055E11208967DC0066C9CF /* ProfileViewController.swift in Sources */,
 				37055E0E2088764B0066C9CF /* AddContactView.swift in Sources */,
 				375E5B2A1E70B379000273D3 /* Contact.swift in Sources */,
 				375E5B351E70E779000273D3 /* UITableView.swift in Sources */,

@@ -12,26 +12,26 @@ import Material
 
 class AddContactView: UIView {
     
-    var overlay:        View!
-    let mainView: UIView = UIView()
+    let overlay:        View = View()
+    let mainView:       UIView = UIView()
     var starsOverlay:   StarsOverlay!
-    var scrollView  =   UIScrollView()
-    var mainStackView = UIStackView()
+    let scrollView:     UIScrollView = UIScrollView()
+    var mainStackView:  UIStackView = UIStackView()
     var activeField:    UITextField?
-    var firstNameField: TextField!
-    var lastNameField:  TextField!
-    var zipField:       TextField!
-    var phoneField:     TextField!
-    var forceField:     View!
-    var birthdayButton: FlatButton!
+    var firstNameField: TextField = TextField()
+    var lastNameField:  TextField = TextField()
+    var zipField:       TextField = TextField()
+    var phoneField:     TextField = TextField()
+    let forceField:     View = View(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+    let birthdayButton: FlatButton = FlatButton(title: "Add Birthday", titleColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.7))
+    let saveBirthdayButton = UIButton()
     let datePicker =    UIDatePicker()
     
     let forceSwitch =   Switch()
     var forceSensitive: Bool = false
     var birthDate:      String?
-    var pictureData:    Data?
     var affiliation:    String?
-    var contactImage:   FABButton!
+    var pictureData:    Data?
     let saveButton:     FlatButton = FlatButton()
     
     
@@ -60,13 +60,13 @@ private extension AddContactView {
         prepareFields()
         prepareForceField()
         prepareBirthdayButton()
-//        prepareImageSelector()
         prepareSaveButton()
         prepareBirthdayOverlay()
         starsOverlay = StarsOverlay(frame: mainView.frame)
         mainView.addSubview(starsOverlay)
         mainView.layout(starsOverlay).edges()
         prepareMainStack()
+        prepareBirthdayOverlay()
     }
     
     func prepareMainStack() {
@@ -79,7 +79,6 @@ private extension AddContactView {
     }
     
     func prepareForceField() {
-        forceField = View(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
         forceField.backgroundColor = UIColor.clear
         forceSwitch.buttonOnColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
         forceSwitch.trackOnColor = Color.yellow.lighten4
@@ -96,12 +95,10 @@ private extension AddContactView {
     }
     
     func prepareBirthdayButton() {
-        birthdayButton = FlatButton(title: "Add Birthday", titleColor: UIColor.white.withAlphaComponent(0.7))
         birthdayButton.backgroundColor = .clear
     }
     
     func prepareBirthdayOverlay() {
-        overlay = View(frame: self.frame)
         overlay.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.9)
         overlay.layout(datePicker).center().left(20).right(20)
         datePicker.datePickerMode = .date
@@ -109,28 +106,19 @@ private extension AddContactView {
         datePicker.setDate(Date(timeIntervalSinceNow: -30000), animated: false)
         datePicker.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         datePicker.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.8)
-        let saveBirthdayButton = FlatButton(title: "Save Birthday")
+        saveBirthdayButton.setTitle("Save Birthday", for: UIControlState())
         overlay.layout(saveBirthdayButton).right(20).centerVertically(offset: datePicker.frame.height/2)
         saveBirthdayButton.setTitleColor(.white, for: .normal)
-        mainView.layout(overlay).top().bottom().left().right()
+        mainView.layout(overlay).edges()
+        mainView.bringSubview(toFront: overlay)
         overlay.isHidden = true
-    }
-    
-    func prepareImageSelector() {
-        contactImage = FABButton()
-        contactImage.setTitle("Add Image", for: .normal)
-        contactImage.titleColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        contactImage.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.2)
-        mainView.layout(contactImage).centerHorizontally().top(50).width(100).height(100)
-        contactImage.clipsToBounds = true
-        contactImage.cornerRadius = contactImage.frame.height/2
     }
     
     func getStyledTextField(placeHolderText: String) -> TextField {
         let field = TextField(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 40))
         field.dividerNormalColor = Color.grey.lighten2.withAlphaComponent(0.4)
         field.placeholderNormalColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.7)
-        field.textColor = .white
+        field.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         field.placeholder = placeHolderText
         field.delegate = self
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -162,22 +150,22 @@ private extension AddContactView {
     
     func prepareZipField() {
         zipField = getStyledTextField(placeHolderText: "Zip")
-        zipField.keyboardType = .namePhonePad
+        zipField.keyboardType = .numberPad
         // Give visual feedback on weither or not the input is valid
         NotificationCenter.default.addObserver(forName: .UITextFieldTextDidChange, object: zipField, queue: .main) { (Notification) in
             guard let text = self.zipField.text else { return }
-            self.zipField.dividerActiveColor = text.rangeOfCharacter(from: .letters) == nil ? Color.blue.base : Color.red.base
+            self.zipField.dividerActiveColor = text.rangeOfCharacter(from: .decimalDigits) != nil ? #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1) : #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         }
     }
     
     func preparePhoneField() {
         phoneField = getStyledTextField(placeHolderText: "Phone Number")
-        phoneField.keyboardType = .namePhonePad
+        phoneField.keyboardType = .numberPad
         // Give visual feedback on weither or not the input is valid
         NotificationCenter.default.addObserver(forName: .UITextFieldTextDidChange, object: phoneField, queue: .main) { (Notification) in
             guard let text = self.phoneField.text else { return }
-            self.phoneField.dividerActiveColor = text.rangeOfCharacter(from: .letters) == nil ? #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1) : #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-            self.phoneField.placeholderActiveColor = text.rangeOfCharacter(from: .letters) == nil ? #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1) : #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+            self.phoneField.dividerActiveColor = text.rangeOfCharacter(from: .decimalDigits) != nil ? #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1) : #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+            self.phoneField.placeholderActiveColor = text.rangeOfCharacter(from: .decimalDigits) != nil ? #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1) : #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         }
     }
     
@@ -191,14 +179,6 @@ extension AddContactView: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         activeField = nil
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
-    }
-    
-    @objc func dismissKeyboard() {
-        self.endEditing(true)
     }
     
 }
