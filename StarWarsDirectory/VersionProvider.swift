@@ -55,6 +55,7 @@ class VersionProvider: VersionProviderProtocol {
         do {
             return try infoValue(forKey: "CFBundleShortVersionString")
         } catch {
+            Log.error(error, logs: [.services])
             fatalError(error.localizedDescription)
         }
     }
@@ -63,6 +64,7 @@ class VersionProvider: VersionProviderProtocol {
         do {
             return try infoValue(forKey: "CFBundleVersion")
         } catch {
+            Log.error(error, logs: [.services])
             fatalError(error.localizedDescription)
         }
     }
@@ -73,6 +75,7 @@ class VersionProvider: VersionProviderProtocol {
     
     private func infoValue(forKey key: String) throws -> String {
         guard let value = info[key] as? String else {
+            Log.error(Error.missingKey(key), logs: [.services])
             throw Error.missingKey(key)
         }
         return value

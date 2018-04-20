@@ -65,7 +65,7 @@ extension Log {
 }
 
 extension Log {
-    static func message(_ message: String, logs: [Log], file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
+    static func message(_ message: String, logs: [Log], file: String = #file, line: Int = #line, function: String = #function) {
         var logs = logs
         if !enabledLogs.isEmpty {
             logs = logs.filter { enabledLogs.contains($0) }
@@ -84,7 +84,7 @@ extension Log {
         if Log.includeMetaData {
             string = """
             
-            [\(dateString) - \((file as NSString).lastPathComponent), \(function), (line: \(line), column: \(column))]
+            [\(dateString) - \((file as NSString).lastPathComponent), \(function), (line: \(line))]
             \(prefix) - \(message)
             
             """
@@ -95,25 +95,25 @@ extension Log {
         print(string)
     }
     
-    static func event(_ event: Event, logs: [Log], file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
-        Log.message(event.description, logs: logs, file: file, line: line, column: column, function: function)
+    static func event(_ event: Event, logs: [Log], file: String = #file, line: Int = #line, function: String = #function) {
+        Log.message(event.description, logs: logs, file: file, line: line, function: function)
     }
     
-    static func error(_ error: Error, message: String? = nil, logs: [Log], file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
-        Log.message("❗️\(message ?? "") \(error)", logs: logs, file: file, line: line, column: column, function: function)
+    static func error(_ error: Error, message: String? = nil, logs: [Log], file: String = #file, line: Int = #line, function: String = #function) {
+        Log.message("❗️\(message ?? "") \(error)", logs: logs, file: file, line: line, function: function)
     }
 }
 
 extension Log {
-    func message(_ message: String, file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
-        Log.message(message, logs: [self], file: file, line: line, column: column, function: function)
+    func message(_ message: String, file: String = #file, line: Int = #line, function: String = #function) {
+        Log.message(message, logs: [self], file: file, line: line, function: function)
     }
     
-    func event(_ event: Log.Event, file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
-        Log.event(event, logs: [self], file: file, line: line, column: column, function: function)
+    func event(_ event: Log.Event, file: String = #file, line: Int = #line, function: String = #function) {
+        Log.event(event, logs: [self], file: file, line: line, function: function)
     }
     
-    func error(_ error: Error, message: String? = nil, file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
-        Log.error(error, message: message, logs: [self], file: file, line: line, column: column, function: function)
+    func error(_ error: Error, message: String? = nil, file: String = #file, line: Int = #line, function: String = #function) {
+        Log.error(error, message: message, logs: [self], file: file, line: line, function: function)
     }
 }

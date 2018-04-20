@@ -12,14 +12,28 @@ import AVFoundation
 
 class AddContactViewController: UIViewController {
     var contentView: AddContactView = AddContactView()
+    var birthdayOverlay: BirthdayOverlay!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareBirthdayOverlay()
         hideKeyboardWhenTappedAround()
         prepareNavigation()
         bindView()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -48,13 +62,18 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func addBirthdayAction() {
-        contentView.overlay.isHidden = !contentView.overlay.isHidden
+        birthdayOverlay.isHidden = !birthdayOverlay.isHidden
+    }
+    
+    func prepareBirthdayOverlay() {
+        birthdayOverlay = BirthdayOverlay(frame: view.frame)
+        view.layout(birthdayOverlay).edges()
     }
     
     func bindView() {
         contentView.saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         contentView.birthdayButton.addTarget(self, action: #selector(addBirthdayAction), for: .touchUpInside)
-        contentView.saveBirthdayButton.addTarget(self, action: #selector(saveBirthdayAction), for: .touchUpInside)
+        birthdayOverlay.saveBirthdayButton.addTarget(self, action: #selector(saveBirthdayAction), for: .touchUpInside)
     }
  
     // MARK: - Keyboard offset methods
@@ -87,7 +106,11 @@ class AddContactViewController: UIViewController {
                               zip: zip,
                               phoneNumber: phoneNumber)
         
-        try? PersistedData.shared?.add(contact: contact)
+        do {
+            try PersistedData.shared?.add(contact: contact)
+        } catch {
+            Log.error(error, logs: [.views])
+        }
         
         navigationController?.popViewController(animated: true)
         NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "newEntry")))
@@ -115,9 +138,9 @@ class AddContactViewController: UIViewController {
     @objc func saveBirthdayAction() {
         let dateFormater = DateFormatter()
         dateFormater.dateStyle = .short
-        contentView.birthDate = dateFormater.string(from: contentView.datePicker.date)
-        contentView.birthdayButton.setTitle("Birthdate :  \(dateFormater.string(from: contentView.datePicker.date))", for: .normal)
-        contentView.overlay.isHidden = true
+        contentView.birthDate = dateFormater.string(from: birthdayOverlay.datePicker.date)
+        contentView.birthdayButton.setTitle("Birthdate :  \(dateFormater.string(from: birthdayOverlay.datePicker.date))", for: .normal)
+        birthdayOverlay.isHidden = true
     }
     
     func formatPhoneNumber(phoneNumber: String?) -> String? {

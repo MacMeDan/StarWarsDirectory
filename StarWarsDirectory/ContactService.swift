@@ -34,11 +34,11 @@ class ContactService: ContactServiceProtocol {
                 }
                 do { try PersistedData.shared?.persistJSONContacts(contactsJSON: json)
                 } catch let error {
-                    print("Failed to persist Contacts: \(error)")
+                    Log.error(error, logs: [.services])
                 }
                 
             case .failure(let error):
-                print("Failed to get Contacts: \(error)")
+                Log.error(error, message: "Failed to get Contacts", logs: [.services])
             }
         }
     }

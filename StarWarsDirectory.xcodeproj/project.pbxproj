@@ -21,6 +21,7 @@
 		37055E0620884B380066C9CF /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E0520884B380066C9CF /* ContactService.swift */; };
 		37055E0E2088764B0066C9CF /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E0D2088764B0066C9CF /* AddContactView.swift */; };
 		37055E11208967DC0066C9CF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E10208967DC0066C9CF /* ProfileViewController.swift */; };
+		37055E1320897F910066C9CF /* BirthdayOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E1220897F910066C9CF /* BirthdayOverlay.swift */; };
 		374393491E735A5200F34C8C /* StarsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374393481E735A5200F34C8C /* StarsOverlay.swift */; };
 		3743934B1E73722C00F34C8C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3743934A1E73722C00F34C8C /* HeaderView.swift */; };
 		375227261E766095005F7D60 /* CircularRevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375227251E766095005F7D60 /* CircularRevealAnimator.swift */; };
@@ -56,6 +57,7 @@
 		37055E0520884B380066C9CF /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		37055E0D2088764B0066C9CF /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
 		37055E10208967DC0066C9CF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		37055E1220897F910066C9CF /* BirthdayOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayOverlay.swift; sourceTree = "<group>"; };
 		374393481E735A5200F34C8C /* StarsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsOverlay.swift; sourceTree = "<group>"; };
 		3743934A1E73722C00F34C8C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		375227251E766095005F7D60 /* CircularRevealAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularRevealAnimator.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				37055E0D2088764B0066C9CF /* AddContactView.swift */,
+				37055E1220897F910066C9CF /* BirthdayOverlay.swift */,
 				3743934A1E73722C00F34C8C /* HeaderView.swift */,
 				375FFBCB1E720BE000473E91 /* IntroViewController.swift */,
 				375E5B2B1E70B81C000273D3 /* ContactTableViewCell.swift */,
@@ -376,6 +379,7 @@
 				3743934B1E73722C00F34C8C /* HeaderView.swift in Sources */,
 				37055DED208829DC0066C9CF /* DependencyContainer.swift in Sources */,
 				37055E03208846150066C9CF /* UITableViewHeaderFooterView.swift in Sources */,
+				37055E1320897F910066C9CF /* BirthdayOverlay.swift in Sources */,
 				375FFBCE1E720EE900473E91 /* ProfileButton.swift in Sources */,
 				375E5B331E70D4CB000273D3 /* UIImageView.swift in Sources */,
 				375E5B371E70F059000273D3 /* PersistantData.swift in Sources */,

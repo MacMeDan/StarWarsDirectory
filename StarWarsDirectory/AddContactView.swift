@@ -12,7 +12,6 @@ import Material
 
 class AddContactView: UIView {
     
-    let overlay:        View = View()
     let mainView:       UIView = UIView()
     var starsOverlay:   StarsOverlay!
     let scrollView:     UIScrollView = UIScrollView()
@@ -24,16 +23,12 @@ class AddContactView: UIView {
     var phoneField:     TextField = TextField()
     let forceField:     View = View(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
     let birthdayButton: FlatButton = FlatButton(title: "Add Birthday", titleColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.7))
-    let saveBirthdayButton = UIButton()
-    let datePicker =    UIDatePicker()
-    
     let forceSwitch =   Switch()
     var forceSensitive: Bool = false
     var birthDate:      String?
     var affiliation:    String?
     var pictureData:    Data?
     let saveButton:     FlatButton = FlatButton()
-    
     
     convenience init() {
         self.init(frame: .zero)
@@ -50,6 +45,7 @@ class AddContactView: UIView {
     
 }
 
+// MARK: - Private extension making all functions contained within are private as well.
 private extension AddContactView {
     
     func prepareView() {
@@ -61,12 +57,10 @@ private extension AddContactView {
         prepareForceField()
         prepareBirthdayButton()
         prepareSaveButton()
-        prepareBirthdayOverlay()
         starsOverlay = StarsOverlay(frame: mainView.frame)
         mainView.addSubview(starsOverlay)
         mainView.layout(starsOverlay).edges()
         prepareMainStack()
-        prepareBirthdayOverlay()
     }
     
     func prepareMainStack() {
@@ -96,22 +90,6 @@ private extension AddContactView {
     
     func prepareBirthdayButton() {
         birthdayButton.backgroundColor = .clear
-    }
-    
-    func prepareBirthdayOverlay() {
-        overlay.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.9)
-        overlay.layout(datePicker).center().left(20).right(20)
-        datePicker.datePickerMode = .date
-        datePicker.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKeyPath: "textColor")
-        datePicker.setDate(Date(timeIntervalSinceNow: -30000), animated: false)
-        datePicker.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        datePicker.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.8)
-        saveBirthdayButton.setTitle("Save Birthday", for: UIControlState())
-        overlay.layout(saveBirthdayButton).right(20).centerVertically(offset: datePicker.frame.height/2)
-        saveBirthdayButton.setTitleColor(.white, for: .normal)
-        mainView.layout(overlay).edges()
-        mainView.bringSubview(toFront: overlay)
-        overlay.isHidden = true
     }
     
     func getStyledTextField(placeHolderText: String) -> TextField {
