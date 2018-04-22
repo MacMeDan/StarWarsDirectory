@@ -29,6 +29,7 @@ class AddContactView: UIView {
     var birthDate:      String?
     var affiliation:    String?
     var pictureData:    Data?
+    var contactImage:   UIButton = UIButton()
     let saveButton:     FlatButton = FlatButton()
     
     convenience init() {
@@ -62,6 +63,7 @@ private extension AddContactView {
         mainView.addSubview(starsOverlay)
         mainView.layout(starsOverlay).edges()
         prepareMainStack()
+        prepareImageSelector()
     }
     
     func prepareMainStack() {
@@ -104,6 +106,15 @@ private extension AddContactView {
         return field
     }
     
+    func prepareImageSelector() {
+        contactImage.setTitle("Add Image", for: .normal)
+        contactImage.setTitleColor(theme.secondary, for: .normal)
+        contactImage.backgroundColor = theme.secondary.withAlphaComponent(0.2)
+        mainView.layout(contactImage).centerHorizontally().top(50).width(100).height(100)
+        contactImage.clipsToBounds = true
+        contactImage.cornerRadius = contactImage.frame.height/2
+    }
+    
     func prepareSaveButton() {
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(theme.nutralLight, for: .disabled)
@@ -129,7 +140,6 @@ private extension AddContactView {
     
     func prepareZipField() {
         zipField = getStyledTextField(placeHolderText: "Zip")
-        zipField.keyboardType = .numberPad
         // Give visual feedback on weither or not the input is valid
         NotificationCenter.default.addObserver(forName: .UITextFieldTextDidChange, object: zipField, queue: .main) { (Notification) in
             guard let text = self.zipField.text else { return }
@@ -139,7 +149,7 @@ private extension AddContactView {
     
     func preparePhoneField() {
         phoneField = getStyledTextField(placeHolderText: "Phone Number")
-        phoneField.keyboardType = .numberPad
+//        phoneField.keyboardType = .numberPad
         // Give visual feedback on weither or not the input is valid
         NotificationCenter.default.addObserver(forName: .UITextFieldTextDidChange, object: phoneField, queue: .main) { (Notification) in
             guard let text = self.phoneField.text else { return }
