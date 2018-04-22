@@ -11,7 +11,7 @@ import UIKit
 private let ButtonPadding: CGFloat = 50
 
 @IBDesignable class ProfileButton: UIButton {
-    
+    /// - Tag: RadialButton
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
         return CGSize(width: size.width + ButtonPadding, height: size.height)

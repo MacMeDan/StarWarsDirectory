@@ -8,6 +8,7 @@
 
 import Foundation
 enum Log: Int {
+    
     case models
     case persistence
     case network
@@ -15,14 +16,14 @@ enum Log: Int {
     case viewModels
     case views
     
-    var prefix: String {
+    var prefix: (String, String) {
         switch self {
-        case .models: return "💃🏻 (Models)"
-        case .persistence: return "📀 (Persistence)"
-        case .network: return "🌐 (Network)"
-        case .services: return "📡 (Service)"
-        case .viewModels: return "🕹 (ViewModels)"
-        case .views: return "📱 (Views)"
+        case .models: return ("💃🏻 ", "Models")
+        case .persistence: return ("📀 ", "Persistence")
+        case .network: return ("🌐 " , "Network")
+        case .services: return ("📡 " , "Service")
+        case .viewModels: return ("🕹 ", "ViewModels")
+        case .views: return ("📱 ", "Views")
         }
     }
     
@@ -56,7 +57,7 @@ extension Log {
         }
         Log.enabledLogs = logs
         Log.includeMetaData = includeMetaData
-        print("Enabled logs: \(logs.map { $0.prefix }.joined(separator: ", ")) \n\n")
+        print("Enabled logs: \(logs.map { $0.prefix.0 + $0.prefix.1  }.joined(separator: ", ")) \n\n")
     }
     
     static func enable(logs: Log..., includeMetaData: Bool = false) {
@@ -78,18 +79,21 @@ extension Log {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         let dateString = dateFormatter.string(from: Date())
-        let prefix = logs.map { $0.prefix }.joined(separator: ", ")
+        
         
         var string = ""
         if Log.includeMetaData {
+            let verbosePrefex = logs.map { $0.prefix.0 + $0.prefix.1 }.joined(separator: ", ")
             string = """
             
+            \(verbosePrefex) - \(message)
             [\(dateString) - \((file as NSString).lastPathComponent), \(function), (line: \(line))]
-            \(prefix) - \(message)
+            
             
             """
         } else {
-            string = "[\(dateString)] \(prefix) - \(message)"
+            let logDesc = logs.map { $0.prefix.0 }.joined(separator: ", ")
+            string = "\(logDesc) - \(message)"
         }
         
         print(string)

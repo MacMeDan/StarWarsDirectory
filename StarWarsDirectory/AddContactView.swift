@@ -22,6 +22,7 @@ class AddContactView: UIView {
     var zipField:       TextField = TextField()
     var phoneField:     TextField = TextField()
     let forceField:     View = View(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+    let theme = Theme()
     let birthdayButton: FlatButton = FlatButton(title: "Add Birthday", titleColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.7))
     let forceSwitch =   Switch()
     var forceSensitive: Bool = false
@@ -74,7 +75,7 @@ private extension AddContactView {
     
     func prepareForceField() {
         forceField.backgroundColor = UIColor.clear
-        forceSwitch.buttonOnColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
+        forceSwitch.buttonOnColor = theme.primary
         forceSwitch.trackOnColor = Color.yellow.lighten4
         forceField.layout(forceSwitch).centerVertically().right(10)
         let label = UILabel()
@@ -95,8 +96,8 @@ private extension AddContactView {
     func getStyledTextField(placeHolderText: String) -> TextField {
         let field = TextField(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 40))
         field.dividerNormalColor = Color.grey.lighten2.withAlphaComponent(0.4)
-        field.placeholderNormalColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.7)
-        field.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        field.placeholderNormalColor = theme.secondary.withAlphaComponent(0.7)
+        field.textColor = theme.secondary
         field.placeholder = placeHolderText
         field.delegate = self
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -105,8 +106,8 @@ private extension AddContactView {
     
     func prepareSaveButton() {
         saveButton.setTitle("Save", for: .normal)
-        saveButton.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .disabled)
-        saveButton.setTitleColor(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), for: .normal)
+        saveButton.setTitleColor(theme.nutralLight, for: .disabled)
+        saveButton.setTitleColor(theme.primary, for: .normal)
         self.saveButton.isEnabled = false
         mainView.layout(saveButton).bottom(20).right(30)
     }

@@ -96,7 +96,8 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func saveAction() {
-        let phoneNumber = contentView.phoneField.text == "" ? nil : formatPhoneNumber(phoneNumber: contentView.phoneField.text)
+        let rawNumber = contentView.phoneField.text ?? ""
+        let phoneNumber = Format.PhoneNumber.phoneNumberString(for: rawNumber)
         let zip = contentView.zipField.text == "" ? nil : contentView.zipField.text
         let contact = Contact(firstName: contentView.firstNameField.text!,
                               lastName: contentView.lastNameField.text!,
@@ -143,18 +144,4 @@ class AddContactViewController: UIViewController {
         birthdayOverlay.isHidden = true
     }
     
-    func formatPhoneNumber(phoneNumber: String?) -> String? {
-        if let number = phoneNumber {
-            if number.count > 10 || number.count < 6 {
-                return number
-            }
-            
-            let areaCode = number[number.startIndex...number.index(number.startIndex, offsetBy: 4)]
-            let firstThree = number[number.index(number.startIndex, offsetBy: 4)...number.index(number.startIndex, offsetBy: 6)]
-            let lastFour = number[number.index(number.startIndex, offsetBy: 6)...]
-            
-            return "(\(areaCode)) \(firstThree)-\(lastFour)"
-        }
-        return phoneNumber
-    }
 }

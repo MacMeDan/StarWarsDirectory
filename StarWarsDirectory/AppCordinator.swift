@@ -17,16 +17,15 @@ class AppCoordinator: NSObject {
     static let shared = AppCoordinator()
     var dependencyContainer: DependencyContainer!
 
-    // MARK: - Logging
-    
+    /// - Tag: Logs
     private func enableLogging() {
         // Just comment out logs that you don't want enabled. Don't delete lines.
         Log.enable(logs: [
-            //            .models,
-            //            .persistence,
-            //            .network,
-            //            .services,
-            //            .viewModels,
+            .models,
+            .persistence,
+            .network,
+            .services,
+            .viewModels,
             .views,
             ], includeMetaData: true)
     }
@@ -55,7 +54,7 @@ private extension AppCoordinator {
     
     func configureStyles() {
         let styleManager = dependencyContainer.makeStyleManager()
-        styleManager.configureStyles()
+        styleManager.configureStyles(theme: Theme())
     }
     
 }

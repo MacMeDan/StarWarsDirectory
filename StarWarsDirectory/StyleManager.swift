@@ -9,66 +9,56 @@
 import UIKit
 
 protocol StyleManagerProtocol {
-    func configureStyles()
+    func configureStyles(theme: ThemeProtocol)
 }
 
 class StyleManager: StyleManagerProtocol {
-    func configureStyles() {
-        
-        // TODO: update to user this.
+    
+    var theme: ThemeProtocol!
+    
+    func configureStyles(theme: ThemeProtocol) {
+        self.theme = theme
         
         // Bar buttons
-//        do {
-//            let proxy = UIBarButtonItem.appearance()
-//            proxy.setTitleTextAttributes([NSAttributedStringKey.font: Font.appFont(ofSize: 17, style: .book),
-//                                          NSAttributedStringKey.foregroundColor: Color.white], for: .normal)
-//
-//            proxy.setTitleTextAttributes([NSAttributedStringKey.font: Font.appFont(ofSize: 17, style: .book),
-//                                          NSAttributedStringKey.foregroundColor: Color.highlighted(Color.white)], for: .highlighted)
-//
-//            proxy.setTitleTextAttributes([NSAttributedStringKey.font: Font.appFont(ofSize: 17, style: .book),
-//                                          NSAttributedStringKey.foregroundColor: Color.white.withAlphaComponent(0.2)], for: .disabled)
-//        }
-        
-        // Segmented control
-//        do {
-//            let proxy = UISegmentedControl.appearance()
-//            proxy.tintColor = Color.primary
-//            proxy.setTitleTextAttributes([NSAttributedStringKey.font: Font.appFont(ofSize: 13, style: .book)], for: .normal)
-//        }
-//
-//        // Table view section headers
-//        do {
-//            let proxy = UITableViewHeaderFooterView.appearance()
-//            proxy.textLabel?.font = Font.appFont(ofSize: 12, style: .book)
-//            proxy.textLabel?.textColor = Color.SearchBar.placeholder
-//        }
-
+        do {
+            let BarButtonAppearence = UIBarButtonItem.appearance()
+            BarButtonAppearence.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: theme.secondary], for: .normal)
+            BarButtonAppearence.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: theme.accent], for: .highlighted)
+            
+            BarButtonAppearence.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: theme.secondary.withAlphaComponent(0.2)], for: .disabled)
+        }
         
         // Navigation bars
         do {
-            let proxy = UINavigationBar.appearance()
-            
-            proxy.barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            proxy.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            proxy.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-            proxy.shadowImage = UIImage()
-            proxy.isTranslucent = true
-            proxy.titleTextAttributes = [
-                NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            let NavBarAppearence = UINavigationBar.appearance()
+            NavBarAppearence.barTintColor = theme.secondary
+            NavBarAppearence.tintColor = theme.secondary
+            NavBarAppearence.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            NavBarAppearence.shadowImage = UIImage()
+            NavBarAppearence.isTranslucent = true
+            NavBarAppearence.titleTextAttributes = [
+                NSAttributedStringKey.foregroundColor: theme.tertiary
             ]
         }
-//
-//        // Text fields
-//        do {
-//            let proxy = UITextField.appearance()
-//            proxy.tintColor = Color.secondary
-//        }
-//
-//        // Table view
-//        do {
-//            let proxy = UITableView.appearance()
-//            proxy.separatorColor = Color.lightTrim
-//        }
+
+        // Text fields
+        do {
+            let textFieldAppearence = UITextField.appearance()
+            textFieldAppearence.tintColor = theme.secondary
+        }
+
+        // Table view
+        do {
+            let tableViewAppearence = UITableView.appearance()
+            tableViewAppearence.separatorColor = theme.nutralDark
+        }
+        
+        do {
+            let cell = UITableViewCell.appearance()
+            cell.textLabel?.textColor = theme.nutral
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
+            cell.detailTextLabel?.textColor = theme.nutralLight
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
+        }
     }
 }

@@ -11,6 +11,7 @@ import Alamofire
 
 protocol ContactServiceProtocol {
     
+    /// Sync Contacts
     func sync()
     
 }
@@ -24,6 +25,7 @@ class ContactService: ContactServiceProtocol {
         self.factory = factory
     }
     
+    /// - Tag: REST
     func sync() {
         let request = Alamofire.request(EndpointProvider().directory)
         request.validate().responseJSON { response in

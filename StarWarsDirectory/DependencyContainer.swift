@@ -11,13 +11,14 @@ import UIKit
 import Alamofire
 
 class DependencyContainer {
-    
+    /// - Tag: DependencyInjection
     // MARK: Providers
     static var infoDictionary = Bundle.main.infoDictionary!
     
     lazy var versionProvider: VersionProviderProtocol = VersionProvider(info: DependencyContainer.infoDictionary)
 
     // MARK: Services
+    lazy var contatcService = ContactService(factory: self)
     
     lazy var sessionManager = SessionManager(configuration: .default)
 
@@ -25,7 +26,7 @@ class DependencyContainer {
 
 // MARK: - Factories -
 
-// MARK: - View Controllers
+// MARK: View Controllers
 protocol ViewControllerFactory {
     func create<T: UIViewController>(from storyboardName: String, _ identifier: String?) -> T
 }
@@ -50,7 +51,7 @@ extension DependencyContainer: ViewControllerFactory {
     
 }
 
-// MARK: - Services
+// MARK: - Services -
 
 // MARK: SessionManager
 
@@ -64,15 +65,13 @@ extension DependencyContainer: SessionManagerFactory {
     }
 }
 
-// MARK: Services
-
 protocol ServiceFactory: class {
     func makeContactService() -> ContactServiceProtocol
 }
 
 extension DependencyContainer: ServiceFactory {
     func makeContactService() -> ContactServiceProtocol {
-        return ContactService(factory: self)
+        return contatcService
     }
 }
 

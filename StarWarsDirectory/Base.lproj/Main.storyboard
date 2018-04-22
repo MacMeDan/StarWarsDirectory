@@ -36,7 +36,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEk-7l-IU4" customClass="ProfileButton" customModule="StarWarsDirectory" customModuleProvider="target">
-                                        <rect key="frame" x="122.5" y="400.5" width="130" height="54"/>
+                                        <rect key="frame" x="97.5" y="400.5" width="180" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="Pgm-f0-JzG"/>
                                         </constraints>

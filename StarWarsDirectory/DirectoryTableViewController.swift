@@ -38,12 +38,10 @@ class DirectoryTableViewController: UIViewController {
     private func perpareTable() {
         tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier)
         tableView.removeLines()
-        tableView.separatorColor = #colorLiteral(red: 0.1215686275, green: 0.1137254902, blue: 0.1333333333, alpha: 1)
     }
     
     private func perpareNavigationBar() {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContact))
-        addButton.tintColor = UIColor.white
         let item: UINavigationItem = UINavigationItem(title: "Contact list")
             item.rightBarButtonItem = addButton
         navigationController!.navigationBar.setItems([item], animated: false)
@@ -132,6 +130,7 @@ extension DirectoryTableViewController: UITableViewDataSource, UITableViewDelega
 }
 
 // MARK: Dizolve Animation
+/// - Tag: DizolveAnimation
 extension DirectoryTableViewController: UIViewControllerTransitioningDelegate {
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {

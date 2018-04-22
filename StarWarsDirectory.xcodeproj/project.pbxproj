@@ -15,13 +15,16 @@
 		37055DF720882D860066C9CF /* EndpointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055DF620882D860066C9CF /* EndpointProvider.swift */; };
 		37055DF920882EED0066C9CF /* AppCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055DF820882EED0066C9CF /* AppCordinator.swift */; };
 		37055DFB208834100066C9CF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 37055DFA208834100066C9CF /* README.md */; };
-		37055DFD208839F20066C9CF /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055DFC208839F20066C9CF /* Style.swift */; };
+		37055DFD208839F20066C9CF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055DFC208839F20066C9CF /* Theme.swift */; };
 		37055E01208845F70066C9CF /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E00208845F70066C9CF /* UITableViewCell.swift */; };
 		37055E03208846150066C9CF /* UITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E02208846150066C9CF /* UITableViewHeaderFooterView.swift */; };
 		37055E0620884B380066C9CF /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E0520884B380066C9CF /* ContactService.swift */; };
 		37055E0E2088764B0066C9CF /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E0D2088764B0066C9CF /* AddContactView.swift */; };
 		37055E11208967DC0066C9CF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E10208967DC0066C9CF /* ProfileViewController.swift */; };
 		37055E1320897F910066C9CF /* BirthdayOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E1220897F910066C9CF /* BirthdayOverlay.swift */; };
+		37055E18208C39FF0066C9CF /* Formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E17208C39FF0066C9CF /* Formater.swift */; };
+		37055E2A208C3B820066C9CF /* PhoneNumberFormatersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E29208C3B820066C9CF /* PhoneNumberFormatersTest.swift */; };
+		37055E2C208C4B480066C9CF /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37055E2B208C4B480066C9CF /* PhoneNumberFormatter.swift */; };
 		374393491E735A5200F34C8C /* StarsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374393481E735A5200F34C8C /* StarsOverlay.swift */; };
 		3743934B1E73722C00F34C8C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3743934A1E73722C00F34C8C /* HeaderView.swift */; };
 		375227261E766095005F7D60 /* CircularRevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375227251E766095005F7D60 /* CircularRevealAnimator.swift */; };
@@ -43,6 +46,16 @@
 		37D6876C1F3CDBDF00BC2541 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D6876B1F3CDBDF00BC2541 /* AddContactViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		37055E22208C3A8C0066C9CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 375E5B0A1E70AFCE000273D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 375E5B111E70AFCE000273D3;
+			remoteInfo = StarWarsDirectory;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		37055DEC208829DC0066C9CF /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		37055DEE20882A310066C9CF /* StyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
@@ -51,13 +64,18 @@
 		37055DF620882D860066C9CF /* EndpointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProvider.swift; sourceTree = "<group>"; };
 		37055DF820882EED0066C9CF /* AppCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCordinator.swift; sourceTree = "<group>"; };
 		37055DFA208834100066C9CF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		37055DFC208839F20066C9CF /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		37055DFC208839F20066C9CF /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		37055E00208845F70066C9CF /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		37055E02208846150066C9CF /* UITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		37055E0520884B380066C9CF /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		37055E0D2088764B0066C9CF /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
 		37055E10208967DC0066C9CF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		37055E1220897F910066C9CF /* BirthdayOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayOverlay.swift; sourceTree = "<group>"; };
+		37055E17208C39FF0066C9CF /* Formater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formater.swift; sourceTree = "<group>"; };
+		37055E1D208C3A8C0066C9CF /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37055E21208C3A8C0066C9CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37055E29208C3B820066C9CF /* PhoneNumberFormatersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatersTest.swift; sourceTree = "<group>"; };
+		37055E2B208C4B480066C9CF /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		374393481E735A5200F34C8C /* StarsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsOverlay.swift; sourceTree = "<group>"; };
 		3743934A1E73722C00F34C8C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		375227251E766095005F7D60 /* CircularRevealAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularRevealAnimator.swift; sourceTree = "<group>"; };
@@ -86,6 +104,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		37055E1A208C3A8C0066C9CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		375E5B0F1E70AFCE000273D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,7 +139,6 @@
 				37055DF620882D860066C9CF /* EndpointProvider.swift */,
 				37055DF420882D2E0066C9CF /* VersionProvider.swift */,
 				37055DEE20882A310066C9CF /* StyleManager.swift */,
-				37055DFC208839F20066C9CF /* Style.swift */,
 				37055DF020882B2E0066C9CF /* Logs.swift */,
 			);
 			name = Sources;
@@ -158,10 +182,30 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		37055E14208C36000066C9CF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				37055E17208C39FF0066C9CF /* Formater.swift */,
+				37055E2B208C4B480066C9CF /* PhoneNumberFormatter.swift */,
+				37055DFC208839F20066C9CF /* Theme.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		37055E1E208C3A8C0066C9CF /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				37055E29208C3B820066C9CF /* PhoneNumberFormatersTest.swift */,
+				37055E21208C3A8C0066C9CF /* Info.plist */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
 		375E5B091E70AFCE000273D3 = {
 			isa = PBXGroup;
 			children = (
 				375E5B141E70AFCE000273D3 /* StarWarsDirectory */,
+				37055E1E208C3A8C0066C9CF /* UnitTests */,
 				375E5B131E70AFCE000273D3 /* Products */,
 				063B494B61CEBCA0C62AA76E /* Pods */,
 				BA949A4D93D6EDC5AF80D633 /* Frameworks */,
@@ -172,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				375E5B121E70AFCE000273D3 /* StarWarsDirectory.app */,
+				37055E1D208C3A8C0066C9CF /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,6 +227,7 @@
 				375E5B151E70AFCE000273D3 /* AppDelegate.swift */,
 				37055DFA208834100066C9CF /* README.md */,
 				37055E0420884B150066C9CF /* Services */,
+				37055E14208C36000066C9CF /* Utilities */,
 				37055DEB208829CC0066C9CF /* Sources */,
 				37055E0B20885B930066C9CF /* Models */,
 				37055E0F20895DDF0066C9CF /* Controllers */,
@@ -241,6 +287,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		37055E1C208C3A8C0066C9CF /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37055E24208C3A8C0066C9CF /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				37055E19208C3A8C0066C9CF /* Sources */,
+				37055E1A208C3A8C0066C9CF /* Frameworks */,
+				37055E1B208C3A8C0066C9CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37055E23208C3A8C0066C9CF /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 37055E1D208C3A8C0066C9CF /* UnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		375E5B111E70AFCE000273D3 /* StarWarsDirectory */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 375E5B241E70AFCE000273D3 /* Build configuration list for PBXNativeTarget "StarWarsDirectory" */;
@@ -266,10 +330,16 @@
 		375E5B0A1E70AFCE000273D3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = MacMeDan;
 				TargetAttributes = {
+					37055E1C208C3A8C0066C9CF = {
+						CreatedOnToolsVersion = 9.3;
+						DevelopmentTeam = H9KX8WA9HF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 375E5B111E70AFCE000273D3;
+					};
 					375E5B111E70AFCE000273D3 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = G9248FU2G8;
@@ -292,11 +362,19 @@
 			projectRoot = "";
 			targets = (
 				375E5B111E70AFCE000273D3 /* StarWarsDirectory */,
+				37055E1C208C3A8C0066C9CF /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		37055E1B208C3A8C0066C9CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		375E5B101E70AFCE000273D3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -362,6 +440,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		37055E19208C3A8C0066C9CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37055E2A208C3B820066C9CF /* PhoneNumberFormatersTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		375E5B0E1E70AFCE000273D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,8 +459,9 @@
 				37055DF720882D860066C9CF /* EndpointProvider.swift in Sources */,
 				37055E01208845F70066C9CF /* UITableViewCell.swift in Sources */,
 				375FFBD81E72106400473E91 /* View.swift in Sources */,
-				37055DFD208839F20066C9CF /* Style.swift in Sources */,
+				37055DFD208839F20066C9CF /* Theme.swift in Sources */,
 				37055DF120882B2E0066C9CF /* Logs.swift in Sources */,
+				37055E18208C39FF0066C9CF /* Formater.swift in Sources */,
 				37D6876C1F3CDBDF00BC2541 /* AddContactViewController.swift in Sources */,
 				3743934B1E73722C00F34C8C /* HeaderView.swift in Sources */,
 				37055DED208829DC0066C9CF /* DependencyContainer.swift in Sources */,
@@ -387,6 +474,7 @@
 				375FFBCC1E720BE000473E91 /* IntroViewController.swift in Sources */,
 				37055E11208967DC0066C9CF /* ProfileViewController.swift in Sources */,
 				37055E0E2088764B0066C9CF /* AddContactView.swift in Sources */,
+				37055E2C208C4B480066C9CF /* PhoneNumberFormatter.swift in Sources */,
 				375E5B2A1E70B379000273D3 /* Contact.swift in Sources */,
 				375E5B351E70E779000273D3 /* UITableView.swift in Sources */,
 				37055DF520882D2E0066C9CF /* VersionProvider.swift in Sources */,
@@ -399,6 +487,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		37055E23208C3A8C0066C9CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 375E5B111E70AFCE000273D3 /* StarWarsDirectory */;
+			targetProxy = 37055E22208C3A8C0066C9CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		375E5B191E70AFCE000273D3 /* Main.storyboard */ = {
@@ -420,6 +516,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		37055E25208C3A8C0066C9CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H9KX8WA9HF;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MacmeDan.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarWarsDirectory.app/StarWarsDirectory";
+			};
+			name = Debug;
+		};
+		37055E26208C3A8C0066C9CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H9KX8WA9HF;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MacmeDan.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarWarsDirectory.app/StarWarsDirectory";
+			};
+			name = Release;
+		};
 		375E5B221E70AFCE000273D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -562,6 +702,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		37055E24208C3A8C0066C9CF /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37055E25208C3A8C0066C9CF /* Debug */,
+				37055E26208C3A8C0066C9CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		375E5B0D1E70AFCE000273D3 /* Build configuration list for PBXProject "StarWarsDirectory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

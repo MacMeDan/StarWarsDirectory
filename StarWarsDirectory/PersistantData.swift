@@ -30,14 +30,14 @@ struct PersistedData {
 
     init?() {
         guard let dbPath = PersistedData.dbPath() else {
-            print("Failed to get a valid database path.")
+            Log.event(Log.Event(description: "Failed to get a valid database path."), logs: [.persistence])
             return nil
         }
         do {
             connection = try Connection(dbPath)
             try updateDatabaseFromVersion(fromVersion: connection.userVersion , toVersion: PersistedData.CurrentVersion)
         } catch let error {
-            print("Failed to create database connection to \(dbPath): \(error)")
+            Log.error(error, message: "Failed to create database connection to \(dbPath): \(error)", logs: [.persistence])
             return nil
         }
     }
@@ -118,8 +118,8 @@ struct PersistedData {
     }
     
     func allContacts() -> [Contact] {
-        guard let query = (try? connection.prepare(contacts))?.flatMap({$0}) else {
-            print("Failed to get order Contacts query")
+        guard let query = (try? connection.prepare(contacts))?.compactMap({$0}) else {
+            Log.event(Log.Event(description: "Failed to get order Contacts query"), logs: [.persistence])
             return []
         }
         return Array(query).map { row in
@@ -127,9 +127,9 @@ struct PersistedData {
         }
     }
     
-    func deleteAllCharicters() {
+    func deleteAllContacts() {
         guard (try? connection.run(self.contacts.delete())) != nil else {
-            assertionFailure("Failed to delete all related Charicters patients")
+            Log.event(Log.Event(description: "Failed to delete Charicters"), logs: [.persistence])
             return
         }
     }
@@ -143,7 +143,8 @@ fileprivate extension Connection {
         }
         set {
             if (try? run("PRAGMA user_version = \(newValue)")) == nil {
-                print("Failed to set user version to \(newValue)")
+                
+                Log.event(Log.Event(description: "Failed to set user version to \(newValue)"), logs: [.persistence])
             }
         }
     }

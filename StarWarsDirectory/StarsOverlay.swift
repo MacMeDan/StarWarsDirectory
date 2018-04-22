@@ -9,7 +9,7 @@
 import UIKit
 
 class StarsOverlay: UIView {
-
+    /// - Tag: StarsAnimation
     override class var layerClass : AnyClass {
         return CAEmitterLayer.self
     }
