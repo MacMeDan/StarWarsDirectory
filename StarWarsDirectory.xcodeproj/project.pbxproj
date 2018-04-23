@@ -317,6 +317,7 @@
 				375E5B0F1E70AFCE000273D3 /* Frameworks */,
 				375E5B101E70AFCE000273D3 /* Resources */,
 				E8EE7FE60461B3011F94C67C /* [CP] Embed Pods Frameworks */,
+				E0EF0A6A543509DD805597E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -392,6 +393,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		E0EF0A6A543509DD805597E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsDirectory/Pods-StarWarsDirectory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E8EE7FE60461B3011F94C67C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

@@ -23,16 +23,6 @@ DEPENDENCIES:
   - SQLite.swift
   - StarWars
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Alamofire
-    - AlamofireImage
-    - Material
-    - Motion
-    - SnapKit
-    - SQLite.swift
-    - StarWars
-
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
@@ -44,4 +34,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2e0879ba60e3af0a4517b37610c7c693a29bcc6c
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0
