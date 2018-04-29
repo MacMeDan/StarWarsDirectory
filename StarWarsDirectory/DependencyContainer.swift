@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import Alamofire
-/// - Tag: DependencyInjection
 class DependencyContainer {
     // MARK: Providers
     static var infoDictionary = Bundle.main.infoDictionary!
@@ -31,7 +30,7 @@ protocol ViewControllerFactory {
 }
 
 extension DependencyContainer: ViewControllerFactory {
-    
+    /// - Tag: DependencyInjection
     func create<T>(from storyboardName: String, _ identifier: String? = nil) -> T where T: UIViewController {
         let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
         let viewController: UIViewController?
