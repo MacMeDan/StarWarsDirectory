@@ -3,7 +3,8 @@
 A example application that has been themed with `Star Wars`
 
 This README has links attached to the KeyFeatures that will take you to the file the code it located.
-xcode://clone?repo=<https://github.com/MacMeDan/StarWarsDirectory.git>
+
+[Open in Xcode](xcode://clone?repo=<https://github.com/MacMeDan/StarWarsDirectory.git>)
 
 ### Key Features:
 - [Dependency Injection](x-source-tag://DependencyInjection)
