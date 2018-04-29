@@ -9,9 +9,8 @@
 import Foundation
 import UIKit
 import Alamofire
-
+/// - Tag: DependencyInjection
 class DependencyContainer {
-    /// - Tag: DependencyInjection
     // MARK: Providers
     static var infoDictionary = Bundle.main.infoDictionary!
     
