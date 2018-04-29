@@ -5,7 +5,7 @@ A example application that has been themed with `Star Wars`
 This README has links attached to the KeyFeatures that will take you to the file the code it located.
 
 ### Key Features:
-- [Dependency Injection](x-source-tag://DependencyInjection)
+[Dependency Injection](x-source-tag://DependencyInjection)
 - Protocol Composition
 - [REST](x-source-tag://REST) endpoint consumption
 - Local Storage to a [`SQL` database](x-source-tag://SQLDatabase)
