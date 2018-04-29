@@ -2,9 +2,8 @@
 
 A example application that has been themed with `Star Wars`
 
-This README has links attached to the KeyFeatures that will take you to the file the code it located.
-
-[Open in Xcode](xcode://clone?repo=<https://github.com/MacMeDan/StarWarsDirectory.git>)
+#### META: This README has links attached to the KeyFeatures that will take you to the file the code it located. 
+In Xcode `⌘ + Click` on link to open.
 
 ### Key Features:
 - [Dependency Injection](x-source-tag://DependencyInjection)
